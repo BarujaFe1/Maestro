@@ -280,8 +280,6 @@ Distribuído sob a licença MIT. Veja `LICENSE` para mais informações.
 Desenvolvido por **BarujaFe**
 
 <p align="center">
-<img src="./docs/login.jpeg" alt="Tela de login" width="200" />
-<img src="./docs/registro.jpeg" alt="Tela de registro" width="200" />
-<img src="./docs/alertar.jpeg" alt="Modal de alerta" width="200" />
+<img src="./docs/foto.jpeg" alt="Imagem Ilustrativa" width="200" />
 </p>
 ```
