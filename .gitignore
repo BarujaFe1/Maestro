@@ -1,6 +1,9 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 node_modules
 =======
+=======
+>>>>>>> 12bdff861020ff29ec444d80d1c652759931a7b5
 # Logs
 logs
 *.log
@@ -140,4 +143,7 @@ dist
 # Vite logs files
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+<<<<<<< HEAD
 >>>>>>> fc653e3418f8ab771834eb9e60190067986a4c37
+=======
+>>>>>>> 12bdff861020ff29ec444d80d1c652759931a7b5
