@@ -1,0 +1,189 @@
+{
+  "method": {
+    "name": "Dotzauer I",
+    "family": "cordas-arco",
+    "volume": 1,
+    "total_pages": 46,
+    "id": "dotzauer-i-violoncello",
+    "instruments": [
+      "violoncelo"
+    ]
+  },
+  "structure": [
+    {
+      "lesson": 1,
+      "page_start": 1,
+      "page_end": 6,
+      "pageitems": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "lessonitems": [
+        "lição 1 - prefácio, valores e claves"
+      ],
+      "exercises": [
+        "valores de notas",
+        "pausas",
+        "claves do violoncelo"
+      ],
+      "contentitems": [
+        {
+          "type": "técnica",
+          "number": "notação"
+        },
+        {
+          "type": "técnica",
+          "number": "claves"
+        }
+      ]
+    },
+    {
+      "lesson": 2,
+      "page_start": 7,
+      "page_end": 15,
+      "pageitems": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "lessonitems": [
+        "lição 2 - first position"
+      ],
+      "exercises": [
+        "cordas soltas",
+        "padrões da primeira posição",
+        "afinação inicial"
+      ],
+      "contentitems": [
+        {
+          "type": "técnica",
+          "number": "primeira posição"
+        },
+        {
+          "type": "escala",
+          "number": "Dó maior"
+        }
+      ]
+    },
+    {
+      "lesson": 3,
+      "page_start": 16,
+      "page_end": 24,
+      "pageitems": [
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ],
+      "lessonitems": [
+        "lição 3 - upper first position"
+      ],
+      "exercises": [
+        "extensão da primeira posição",
+        "trocas de cordas",
+        "golpes de arco simples"
+      ],
+      "contentitems": [
+        {
+          "type": "técnica",
+          "number": "upper first position"
+        },
+        {
+          "type": "estudo",
+          "number": 1
+        }
+      ]
+    },
+    {
+      "lesson": 4,
+      "page_start": 25,
+      "page_end": 35,
+      "pageitems": [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35
+      ],
+      "lessonitems": [
+        "lição 4 - escalas e arpejos"
+      ],
+      "exercises": [
+        "escalas progressivas",
+        "arpejos básicos",
+        "coordenação de arco"
+      ],
+      "contentitems": [
+        {
+          "type": "escala",
+          "number": "Sol maior"
+        },
+        {
+          "type": "arpejo",
+          "number": 1
+        },
+        {
+          "type": "arpejo",
+          "number": 2
+        }
+      ]
+    },
+    {
+      "lesson": 5,
+      "page_start": 36,
+      "page_end": 46,
+      "pageitems": [
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46
+      ],
+      "lessonitems": [
+        "lição 5 - estudos progressivos e peças curtas"
+      ],
+      "exercises": [
+        "estudos melódicos",
+        "fraseado básico",
+        "revisão técnica"
+      ],
+      "contentitems": [
+        {
+          "type": "estudo",
+          "number": 2
+        },
+        {
+          "type": "peça",
+          "number": 1
+        }
+      ]
+    }
+  ]
+}

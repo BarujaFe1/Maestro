@@ -1,0 +1,255 @@
+{
+  "total_methods": 19,
+  "families": {
+    "cordas-arco": 5,
+    "metais-boca": 3,
+    "madeira-palheta-simples": 11
+  },
+  "files": [
+    {
+      "file": "laoureux-i-violino.json",
+      "id": "laoureux-i-violino",
+      "name": "Nicolas Laoureux I",
+      "instruments": [
+        "violino"
+      ],
+      "family": "cordas-arco",
+      "volume": 1,
+      "total_pages": 65
+    },
+    {
+      "file": "laoureux-iii-violino.json",
+      "id": "laoureux-iii-violino",
+      "name": "Nicolas Laoureux III",
+      "instruments": [
+        "violino"
+      ],
+      "family": "cordas-arco",
+      "volume": 3,
+      "total_pages": 61
+    },
+    {
+      "file": "metodo-facilitado-viola.json",
+      "id": "metodo-facilitado-viola",
+      "name": "Método Facilitado",
+      "instruments": [
+        "viola"
+      ],
+      "family": "cordas-arco",
+      "volume": 0,
+      "total_pages": 80
+    },
+    {
+      "file": "dotzauer-i-violoncello.json",
+      "id": "dotzauer-i-violoncello",
+      "name": "Dotzauer I",
+      "instruments": [
+        "violoncelo"
+      ],
+      "family": "cordas-arco",
+      "volume": 1,
+      "total_pages": 46
+    },
+    {
+      "file": "dotzauer-ii-violoncello.json",
+      "id": "dotzauer-ii-violoncello",
+      "name": "Dotzauer II",
+      "instruments": [
+        "violoncelo"
+      ],
+      "family": "cordas-arco",
+      "volume": 2,
+      "total_pages": 47
+    },
+    {
+      "file": "almeida-dias-eufonio.json",
+      "id": "almeida-dias-eufonio",
+      "name": "Almeida Dias",
+      "instruments": [
+        "eufonio"
+      ],
+      "family": "metais-boca",
+      "volume": 1,
+      "total_pages": 61
+    },
+    {
+      "file": "almeida-dias-trombone.json",
+      "id": "almeida-dias-trombone",
+      "name": "Almeida Dias",
+      "instruments": [
+        "trombone"
+      ],
+      "family": "metais-boca",
+      "volume": 1,
+      "total_pages": 61
+    },
+    {
+      "file": "almeida-dias-tuba.json",
+      "id": "almeida-dias-tuba",
+      "name": "Almeida Dias",
+      "instruments": [
+        "tuba"
+      ],
+      "family": "metais-boca",
+      "volume": 1,
+      "total_pages": 61
+    },
+    {
+      "file": "giampieri-i-clarinete.json",
+      "id": "giampieri-i-clarinete",
+      "name": "Giampieri I",
+      "instruments": [
+        "clarinete"
+      ],
+      "family": "madeira-palheta-simples",
+      "volume": 1,
+      "total_pages": 31
+    },
+    {
+      "file": "giampieri-ii-clarinete.json",
+      "id": "giampieri-ii-clarinete",
+      "name": "Giampieri II",
+      "instruments": [
+        "clarinete"
+      ],
+      "family": "madeira-palheta-simples",
+      "volume": 2,
+      "total_pages": 31
+    },
+    {
+      "file": "nabok-pires-camargo-clarinete.json",
+      "id": "nabor-pires-camargo-clarinete",
+      "name": "Nabor Pires Camargo",
+      "instruments": [
+        "clarinete"
+      ],
+      "family": "madeira-palheta-simples",
+      "volume": 1,
+      "total_pages": 47
+    },
+    {
+      "file": "rubank-basico-clarinete.json",
+      "id": "rubank-basico-clarinete",
+      "name": "Rubank Básico",
+      "instruments": [
+        "clarinete"
+      ],
+      "family": "madeira-palheta-simples",
+      "volume": 1,
+      "total_pages": 56
+    },
+    {
+      "file": "giampieri-i-clarone.json",
+      "id": "giampieri-i-clarone",
+      "name": "Giampieri I",
+      "instruments": [
+        "clarone"
+      ],
+      "family": "madeira-palheta-simples",
+      "volume": 1,
+      "total_pages": 31
+    },
+    {
+      "file": "giampieri-ii-clarone.json",
+      "id": "giampieri-ii-clarone",
+      "name": "Giampieri II",
+      "instruments": [
+        "clarone"
+      ],
+      "family": "madeira-palheta-simples",
+      "volume": 2,
+      "total_pages": 31
+    },
+    {
+      "file": "nabok-pires-camargo-clarone.json",
+      "id": "nabor-pires-camargo-clarone",
+      "name": "Nabor Pires Camargo",
+      "instruments": [
+        "clarone"
+      ],
+      "family": "madeira-palheta-simples",
+      "volume": 1,
+      "total_pages": 47
+    },
+    {
+      "file": "rubank-basico-clarone.json",
+      "id": "rubank-basico-clarone",
+      "name": "Rubank Básico",
+      "instruments": [
+        "clarone"
+      ],
+      "family": "madeira-palheta-simples",
+      "volume": 1,
+      "total_pages": 56
+    },
+    {
+      "file": "amadeus-russo-sax-soprano.json",
+      "id": "amadeus-russo-sax-soprano",
+      "name": "Amadeus Russo",
+      "instruments": [
+        "sax-soprano"
+      ],
+      "family": "madeira-palheta-simples",
+      "volume": 1,
+      "total_pages": 70
+    },
+    {
+      "file": "amadeus-russo-sax-alto.json",
+      "id": "amadeus-russo-sax-alto",
+      "name": "Amadeus Russo",
+      "instruments": [
+        "sax-alto"
+      ],
+      "family": "madeira-palheta-simples",
+      "volume": 1,
+      "total_pages": 70
+    },
+    {
+      "file": "amadeus-russo-sax-tenor.json",
+      "id": "amadeus-russo-sax-tenor",
+      "name": "Amadeus Russo",
+      "instruments": [
+        "sax-tenor"
+      ],
+      "family": "madeira-palheta-simples",
+      "volume": 1,
+      "total_pages": 70
+    }
+  ],
+  "generation_notes": {
+    "numbering_policy": "pageitems foram normalizados para páginas pedagógicas úteis do método; front matter/capas foram removidos quando necessário. Métodos com índice explícito (Viola e Almeida Dias) preservam a paginação interna do livro.",
+    "estimated_methods": [
+      "laoureux-i-violino",
+      "laoureux-iii-violino",
+      "dotzauer-i-violoncello",
+      "dotzauer-ii-violoncello",
+      "giampieri-i-clarinete",
+      "giampieri-ii-clarinete",
+      "giampieri-i-clarone",
+      "giampieri-ii-clarone",
+      "nabor-pires-camargo-clarinete",
+      "nabor-pires-camargo-clarone",
+      "rubank-basico-clarinete",
+      "rubank-basico-clarone",
+      "amadeus-russo-sax-soprano",
+      "amadeus-russo-sax-alto",
+      "amadeus-russo-sax-tenor"
+    ],
+    "filename_note": "Os arquivos de Nabor preservam o nome de arquivo solicitado pelo usuário (nabok-...), mas o method.id usa a grafia oficial nabor-...."
+  },
+  "fallback": {
+    "method": {
+      "id": "custom",
+      "name": "Método personalizado"
+    },
+    "structure": [
+      {
+        "lesson": 1,
+        "pageitems": [],
+        "lessonitems": []
+      }
+    ]
+  },
+  "import_script_file": "import-method-catalog.ts",
+  "import_script": "import { createClient, SupabaseClient } from '@supabase/supabase-js';\n\nimport laoureuxIViolino from './laoureux-i-violino.json';\nimport laoureuxIIIViolino from './laoureux-iii-violino.json';\nimport metodoFacilitadoViola from './metodo-facilitado-viola.json';\nimport dotzauerIVioloncello from './dotzauer-i-violoncello.json';\nimport dotzauerIIVioloncello from './dotzauer-ii-violoncello.json';\nimport almeidaDiasEufonio from './almeida-dias-eufonio.json';\nimport almeidaDiasTrombone from './almeida-dias-trombone.json';\nimport almeidaDiasTuba from './almeida-dias-tuba.json';\nimport giampieriIClarinete from './giampieri-i-clarinete.json';\nimport giampieriIIClarinete from './giampieri-ii-clarinete.json';\nimport naborClarinete from './nabok-pires-camargo-clarinete.json';\nimport rubankClarinete from './rubank-basico-clarinete.json';\nimport giampieriIClarone from './giampieri-i-clarone.json';\nimport giampieriIIClarone from './giampieri-ii-clarone.json';\nimport naborClarone from './nabok-pires-camargo-clarone.json';\nimport rubankClarone from './rubank-basico-clarone.json';\nimport amadeusRussoSaxSoprano from './amadeus-russo-sax-soprano.json';\nimport amadeusRussoSaxAlto from './amadeus-russo-sax-alto.json';\nimport amadeusRussoSaxTenor from './amadeus-russo-sax-tenor.json';\n\nexport const METHOD_CATALOG = [\n  laoureuxIViolino,\n  laoureuxIIIViolino,\n  metodoFacilitadoViola,\n  dotzauerIVioloncello,\n  dotzauerIIVioloncello,\n  almeidaDiasEufonio,\n  almeidaDiasTrombone,\n  almeidaDiasTuba,\n  giampieriIClarinete,\n  giampieriIIClarinete,\n  naborClarinete,\n  rubankClarinete,\n  giampieriIClarone,\n  giampieriIIClarone,\n  naborClarone,\n  rubankClarone,\n  amadeusRussoSaxSoprano,\n  amadeusRussoSaxAlto,\n  amadeusRussoSaxTenor,\n] as const;\n\nexport const FALLBACK_METHOD = {\n  method: { id: 'custom', name: 'Método personalizado' },\n  structure: [{ lesson: 1, pageitems: [], lessonitems: [] }],\n} as const;\n\nexport const FAMILY_BY_INSTRUMENT: Record<string, string> = {\n  violino: 'cordas-arco',\n  viola: 'cordas-arco',\n  violoncelo: 'cordas-arco',\n  eufonio: 'metais-boca',\n  trombone: 'metais-boca',\n  tuba: 'metais-boca',\n  clarinete: 'madeira-palheta-simples',\n  clarone: 'madeira-palheta-simples',\n  'sax-soprano': 'madeira-palheta-simples',\n  'sax-alto': 'madeira-palheta-simples',\n  'sax-tenor': 'madeira-palheta-simples',\n};\n\nexport const METHODS_BY_INSTRUMENT: Record<string, typeof METHOD_CATALOG[number][]> =\n  METHOD_CATALOG.reduce((acc, item) => {\n    for (const instrument of item.method.instruments) {\n      acc[instrument] ??= [];\n      acc[instrument].push(item);\n    }\n    return acc;\n  }, {} as Record<string, typeof METHOD_CATALOG[number][]>);\n\nexport function listMethods(instrument?: string) {\n  if (!instrument) return METHOD_CATALOG.map((item) => item.method);\n  return (METHODS_BY_INSTRUMENT[instrument] ?? []).map((item) => item.method);\n}\n\nexport function getMethodCatalog(methodId: string) {\n  return METHOD_CATALOG.find((item) => item.method.id === methodId) ?? null;\n}\n\nexport function validateMethodForInstrument(methodId: string, instrument: string) {\n  const method = getMethodCatalog(methodId);\n  if (!method) return false;\n  return method.method.instruments.includes(instrument);\n}\n\nexport function saveMethodGuard(methodId: string, instrument: string) {\n  if (!validateMethodForInstrument(methodId, instrument)) {\n    throw new Error(`Método ${methodId} não é permitido para o instrumento ${instrument}`);\n  }\n  return true;\n}\n\nexport function deriveFamilyByInstrument(instrument: string) {\n  return FAMILY_BY_INSTRUMENT[instrument] ?? null;\n}\n\nexport function getCatalogOrFallback(instrument: string, methodId?: string) {\n  if (!methodId) return FALLBACK_METHOD;\n  const method = getMethodCatalog(methodId);\n  if (!method) return FALLBACK_METHOD;\n  if (!method.method.instruments.includes(instrument)) return FALLBACK_METHOD;\n  return method;\n}\n\nexport function getBulkEntrySuggestions(instrument: string) {\n  return (METHODS_BY_INSTRUMENT[instrument] ?? []).flatMap((item) =>\n    item.structure.flatMap((row) => [\n      ...row.lessonitems,\n      ...row.exercises,\n      ...row.contentitems.map((content) =>\n        typeof content.number === 'number'\n          ? `${content.type} ${content.number}`\n          : `${content.type} ${content.number}`.trim()\n      ),\n    ])\n  );\n}\n\nexport type ImportOptions = {\n  methodsTable?: string;\n  structureTable?: string;\n  upsertOn?: 'id';\n};\n\nexport function assertCatalogIntegrity() {\n  const ids = new Set<string>();\n  for (const item of METHOD_CATALOG) {\n    if (!item.method.instruments?.length) {\n      throw new Error(`Método sem instruments: ${item.method.id}`);\n    }\n    if (ids.has(item.method.id)) {\n      throw new Error(`ID duplicado: ${item.method.id}`);\n    }\n    ids.add(item.method.id);\n\n    const last = item.structure[item.structure.length - 1];\n    if (!last || last.page_end !== item.method.total_pages) {\n      throw new Error(`total_pages inválido em ${item.method.id}`);\n    }\n\n    for (const row of item.structure) {\n      const expected = Array.from(\n        { length: row.page_end - row.page_start + 1 },\n        (_, index) => row.page_start + index\n      );\n      if (JSON.stringify(expected) !== JSON.stringify(row.pageitems)) {\n        throw new Error(`pageitems inválido em ${item.method.id} / lesson ${row.lesson}`);\n      }\n    }\n  }\n  return true;\n}\n\nexport async function importCatalog(\n  supabase: SupabaseClient,\n  options: ImportOptions = {}\n) {\n  assertCatalogIntegrity();\n\n  const methodsTable = options.methodsTable ?? 'methods_catalog';\n  const structureTable = options.structureTable ?? 'method_structure';\n\n  const methodRows = METHOD_CATALOG.map((item) => item.method);\n  const { error: methodsError } = await supabase\n    .from(methodsTable)\n    .upsert(methodRows, { onConflict: options.upsertOn ?? 'id' });\n\n  if (methodsError) throw methodsError;\n\n  const structureRows = METHOD_CATALOG.flatMap((item) =>\n    item.structure.map((row) => ({\n      method_id: item.method.id,\n      ...row,\n    }))\n  );\n\n  const { error: structureError } = await supabase\n    .from(structureTable)\n    .upsert(structureRows, { onConflict: 'method_id,lesson' });\n\n  if (structureError) throw structureError;\n\n  return {\n    imported_methods: methodRows.length,\n    imported_structure_rows: structureRows.length,\n  };\n}\n\n// Exemplo de bootstrap:\n// const supabase = createClient(process.env.EXPO_PUBLIC_SUPABASE_URL!, process.env.EXPO_PUBLIC_SUPABASE_ANON_KEY!);\n// await importCatalog(supabase);\n"
+}

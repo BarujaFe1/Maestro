@@ -1,0 +1,157 @@
+{
+  "method": {
+    "name": "Giampieri I",
+    "family": "madeira-palheta-simples",
+    "volume": 1,
+    "total_pages": 31,
+    "id": "giampieri-i-clarinete",
+    "instruments": [
+      "clarinete"
+    ]
+  },
+  "structure": [
+    {
+      "lesson": 1,
+      "page_start": 1,
+      "page_end": 7,
+      "pageitems": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "lessonitems": [
+        "lição 1 - preparatórios à escala diatônica natural"
+      ],
+      "exercises": [
+        "exercícios preparatórios",
+        "posizione delle dita",
+        "colpo di lingua"
+      ],
+      "contentitems": [
+        {
+          "type": "escala",
+          "number": "diatônica natural"
+        },
+        {
+          "type": "técnica",
+          "number": "colpo di lingua"
+        },
+        {
+          "type": "estudo",
+          "number": "preparatórios"
+        }
+      ]
+    },
+    {
+      "lesson": 2,
+      "page_start": 8,
+      "page_end": 15,
+      "pageitems": [
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "lessonitems": [
+        "lição 2 - legato e passagens"
+      ],
+      "exercises": [
+        "del legato",
+        "passaggio dal La al Si",
+        "ligaduras simples"
+      ],
+      "contentitems": [
+        {
+          "type": "técnica",
+          "number": "legato"
+        },
+        {
+          "type": "estudo",
+          "number": "passagem La-Si"
+        }
+      ]
+    },
+    {
+      "lesson": 3,
+      "page_start": 16,
+      "page_end": 23,
+      "pageitems": [
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23
+      ],
+      "lessonitems": [
+        "lição 3 - estudos progressivos e saltos"
+      ],
+      "exercises": [
+        "salti",
+        "estudos melódicos",
+        "articulação simples"
+      ],
+      "contentitems": [
+        {
+          "type": "técnica",
+          "number": "saltos"
+        },
+        {
+          "type": "estudo",
+          "number": 1
+        },
+        {
+          "type": "estudo",
+          "number": 2
+        }
+      ]
+    },
+    {
+      "lesson": 4,
+      "page_start": 24,
+      "page_end": 31,
+      "pageitems": [
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31
+      ],
+      "lessonitems": [
+        "lição 4 - exercícios cromáticos e estudos finais"
+      ],
+      "exercises": [
+        "esercizi cromatici",
+        "escala cromática",
+        "estudos finais"
+      ],
+      "contentitems": [
+        {
+          "type": "escala",
+          "number": "cromática"
+        },
+        {
+          "type": "técnica",
+          "number": "cromatismo"
+        },
+        {
+          "type": "estudo",
+          "number": 3
+        }
+      ]
+    }
+  ]
+}

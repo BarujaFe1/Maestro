@@ -1,0 +1,257 @@
+{
+  "method": {
+    "name": "Almeida Dias",
+    "family": "metais-boca",
+    "volume": 1,
+    "total_pages": 61,
+    "id": "almeida-dias-eufonio",
+    "instruments": [
+      "eufonio"
+    ]
+  },
+  "structure": [
+    {
+      "lesson": 1,
+      "page_start": 1,
+      "page_end": 8,
+      "pageitems": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "lessonitems": [
+        "lição 1 - introdução, apresentação e organização por fases"
+      ],
+      "exercises": [
+        "introdução ao método",
+        "organização por fases",
+        "orientações de estudo"
+      ],
+      "contentitems": [
+        {
+          "type": "técnica",
+          "number": "introdução"
+        },
+        {
+          "type": "técnica",
+          "number": "fases"
+        }
+      ]
+    },
+    {
+      "lesson": 2,
+      "page_start": 9,
+      "page_end": 13,
+      "pageitems": [
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "lessonitems": [
+        "lição 2 - módulo 1 - escala cromática e tabela de harmônicos"
+      ],
+      "exercises": [
+        "escala cromática",
+        "tabela de harmônicos",
+        "respirações",
+        "metrônomo"
+      ],
+      "contentitems": [
+        {
+          "type": "escala",
+          "number": "cromática"
+        },
+        {
+          "type": "técnica",
+          "number": "harmônicos"
+        }
+      ]
+    },
+    {
+      "lesson": 3,
+      "page_start": 14,
+      "page_end": 23,
+      "pageitems": [
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23
+      ],
+      "lessonitems": [
+        "lição 3 - módulo 2 - exercícios rítmicos e das posições"
+      ],
+      "exercises": [
+        "ritmo em Dó",
+        "ritmo em Si bemol",
+        "ritmo em Mi bemol",
+        "posições"
+      ],
+      "contentitems": [
+        {
+          "type": "técnica",
+          "number": "ritmo"
+        },
+        {
+          "type": "técnica",
+          "number": "posições"
+        },
+        {
+          "type": "estudo",
+          "number": "módulo 2"
+        }
+      ]
+    },
+    {
+      "lesson": 4,
+      "page_start": 24,
+      "page_end": 36,
+      "pageitems": [
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ],
+      "lessonitems": [
+        "lição 4 - módulo 3 - escalas e arpejos"
+      ],
+      "exercises": [
+        "escalas maiores",
+        "arpejos",
+        "progressão por fases"
+      ],
+      "contentitems": [
+        {
+          "type": "escala",
+          "number": "maiores"
+        },
+        {
+          "type": "arpejo",
+          "number": "módulo 3"
+        }
+      ]
+    },
+    {
+      "lesson": 5,
+      "page_start": 37,
+      "page_end": 43,
+      "pageitems": [
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43
+      ],
+      "lessonitems": [
+        "lição 5 - módulo 4 - intervalos"
+      ],
+      "exercises": [
+        "intervalos conjuntos",
+        "saltos controlados",
+        "afinação de intervalos"
+      ],
+      "contentitems": [
+        {
+          "type": "técnica",
+          "number": "intervalos"
+        },
+        {
+          "type": "estudo",
+          "number": "módulo 4"
+        }
+      ]
+    },
+    {
+      "lesson": 6,
+      "page_start": 44,
+      "page_end": 49,
+      "pageitems": [
+        44,
+        45,
+        46,
+        47,
+        48,
+        49
+      ],
+      "lessonitems": [
+        "lição 6 - módulo 5 - flexibilidade"
+      ],
+      "exercises": [
+        "flexibilidade",
+        "legato",
+        "slurs",
+        "controle de embocadura"
+      ],
+      "contentitems": [
+        {
+          "type": "técnica",
+          "number": "flexibilidade"
+        },
+        {
+          "type": "técnica",
+          "number": "legato"
+        }
+      ]
+    },
+    {
+      "lesson": 7,
+      "page_start": 50,
+      "page_end": 61,
+      "pageitems": [
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61
+      ],
+      "lessonitems": [
+        "lição 7 - módulo 6 - estudos melódicos"
+      ],
+      "exercises": [
+        "interpretação",
+        "estudos melódicos",
+        "fraseado e afinação"
+      ],
+      "contentitems": [
+        {
+          "type": "estudo",
+          "number": "melódico"
+        },
+        {
+          "type": "peça",
+          "number": "interpretação"
+        }
+      ]
+    }
+  ]
+}

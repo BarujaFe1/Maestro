@@ -1,0 +1,2269 @@
+﻿MAESTRO - SUPERMAPEAMENTO TECNICO
+================================
+
+Gerado em: 2026-04-05 11:44:53
+Raiz: D:\Dev\Projetos VibeCoding\Maestro
+Arquivos incluidos: 57
+
+CRITERIO DE FILTRAGEM
+---------------------
+O foco e mostrar apenas o que afeta funcionamento, build, navegacao, backend e dados.
+
+Pastas excluidas:
+- .git
+- node_modules
+- .expo
+- .idea
+- .vscode
+- dist
+- build
+- coverage
+- .gradle
+- .next
+- .turbo
+- tmp
+- temp
+- bin
+- obj
+
+Arquivos excluidos:
+- package-lock.json
+- yarn.lock
+- pnpm-lock.yaml
+- README.md
+- LICENSE
+- .gitignore
+- .gitattributes
+- .DS_Store
+- Thumbs.db
+
+Extensoes excluidas:
+- .log
+- .tmp
+- .bak
+- .swp
+- .png
+- .jpg
+- .jpeg
+- .gif
+- .webp
+- .bmp
+- .ico
+- .mp4
+- .mov
+- .avi
+- .zip
+- .rar
+- .7z
+- .keystore
+- .jks
+- .apk
+- .aab
+- .pdf
+- .mp3
+- .wav
+
+PACKAGE.JSON
+------------
+name: gem-app
+version: 1.0.0
+
+scripts:
+- start: expo start
+- android: expo run:android
+- ios: expo run:ios
+- web: expo start --web
+
+dependencies:
+- @react-native-async-storage/async-storage: 2.2.0
+- @react-native-picker/picker: 2.11.1
+- @react-navigation/drawer: ^7.9.2
+- @react-navigation/native: ^7.1.31
+- @react-navigation/native-stack: ^7.14.2
+- @supabase/supabase-js: ^2.98.0
+- babel-preset-expo: ~54.0.10
+- dayjs: ^1.11.19
+- expo: ^54.0.33
+- expo-file-system: ~19.0.21
+- expo-print: ~15.0.8
+- expo-sharing: ~14.0.8
+- expo-status-bar: ~3.0.9
+- react: 19.1.0
+- react-native: 0.81.5
+- react-native-chart-kit: ^6.12.0
+- react-native-gesture-handler: ~2.28.0
+- react-native-reanimated: ~4.1.1
+- react-native-safe-area-context: ~5.6.2
+- react-native-screens: ~4.16.0
+- react-native-svg: 15.12.1
+- react-native-url-polyfill: ^3.0.0
+- react-native-view-shot: 4.0.3
+- react-native-worklets: 0.5.1
+- xlsx: ^0.18.5
+
+APP.JSON
+--------
+name: Maestro
+slug: maestro
+version: 1.0.1
+android.package: com.maestro.gem
+
+EAS.JSON
+--------
+- development: {"developmentClient":true,"distribution":"internal"}
+- preview: {"distribution":"internal","android":{"buildType":"apk"}}
+- production: {"android":{"buildType":"app-bundle"}}
+
+VARIAVEIS DE AMBIENTE ENCONTRADAS
+---------------------------------
+- EXPO_PUBLIC_ORG_JOIN_CODE
+- EXPO_PUBLIC_SUPABASE_ANON_KEY
+- EXPO_PUBLIC_SUPABASE_URL
+
+RESUMO POR CATEGORIA
+--------------------
+- : 57
+
+ENTRYPOINT
+----------
+
+ARQUIVO: ./App.js
+categoria: entrypoint
+tamanho_bytes: 1618
+imports: ./src/components/ErrorBoundary, ./src/context/AuthContext, ./src/navigation/AppNavigator, ./src/theme/ThemeProvider, ./src/utils/errorHandler, @react-navigation/native, expo-status-bar, react, react-native
+exports: App
+simbolos: ThemedNav
+preview_inicio
+    import 'react-native-gesture-handler';
+    import 'react-native-url-polyfill/auto';
+    import React, { useEffect } from 'react';
+    import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
+    import { StatusBar } from 'expo-status-bar';
+    import { TextInput } from 'react-native';
+    
+    import { AuthProvider } from './src/context/AuthContext';
+    import AppNavigator from './src/navigation/AppNavigator';
+    import ErrorBoundary from './src/components/ErrorBoundary';
+    import { installGlobalErrorHandlers } from './src/utils/errorHandler';
+    import { ThemeProvider, useTheme } from './src/theme/ThemeProvider';
+    
+    function ThemedNav() {
+      const { theme } = useTheme();
+    
+      const navTheme = {
+        ...DefaultTheme,
+        colors: {
+          ...DefaultTheme.colors,
+          background: theme.colors.bg,
+          card: theme.colors.card,
+          border: theme.colors.border,
+          text: theme.colors.text,
+          primary: theme.colors.accent
+        }
+      };
+    
+      return (
+        <NavigationContainer theme={navTheme}>
+          <StatusBar style={theme.mode === 'dark' ? 'light' : 'dark'} />
+          <AppNavigator />
+        </NavigationContainer>
+      );
+    }
+    
+    export default function App() {
+      useEffect(() => {
+        TextInput.defaultProps = TextInput.defaultProps || {};
+        if (!TextInput.defaultProps.placeholderTextColor) {
+preview_fim
+
+PACKAGE-CONFIG
+--------------
+
+ARQUIVO: ./package.json
+categoria: package-config
+tamanho_bytes: 1210
+preview_inicio
+    {
+      "name": "gem-app",
+      "version": "1.0.0",
+      "private": true,
+      "main": "node_modules/expo/AppEntry.js",
+      "scripts": {
+        "start": "expo start",
+        "android": "expo run:android",
+        "ios": "expo run:ios",
+        "web": "expo start --web"
+      },
+      "dependencies": {
+        "@react-native-async-storage/async-storage": "2.2.0",
+        "@react-native-picker/picker": "2.11.1",
+        "@react-navigation/drawer": "^7.9.2",
+        "@react-navigation/native": "^7.1.31",
+        "@react-navigation/native-stack": "^7.14.2",
+        "@supabase/supabase-js": "^2.98.0",
+        "babel-preset-expo": "~54.0.10",
+        "dayjs": "^1.11.19",
+        "expo": "^54.0.33",
+        "expo-file-system": "~19.0.21",
+        "expo-print": "~15.0.8",
+        "expo-sharing": "~14.0.8",
+        "expo-status-bar": "~3.0.9",
+        "react": "19.1.0",
+        "react-native": "0.81.5",
+        "react-native-chart-kit": "^6.12.0",
+        "react-native-gesture-handler": "~2.28.0",
+        "react-native-reanimated": "~4.1.1",
+        "react-native-safe-area-context": "~5.6.2",
+        "react-native-screens": "~4.16.0",
+        "react-native-svg": "15.12.1",
+        "react-native-url-polyfill": "^3.0.0",
+        "react-native-view-shot": "4.0.3",
+        "react-native-worklets": "0.5.1",
+        "xlsx": "^0.18.5"
+      }
+    }
+preview_fim
+
+EXPO-CONFIG
+-----------
+
+ARQUIVO: ./app.json
+categoria: expo-config
+tamanho_bytes: 474
+preview_inicio
+    {
+      "expo": {
+        "name": "Maestro",
+        "slug": "maestro",
+        "version": "1.0.1",
+        "icon": "./assets/icon.png",
+        "orientation": "portrait",
+        "userInterfaceStyle": "automatic",
+        "android": {
+          "package": "com.maestro.gem",
+          "adaptiveIcon": {
+            "foregroundImage": "./assets/icon.png",
+            "backgroundColor": "#0b1220"
+          }
+        },
+        "extra": {
+          "eas": {
+            "projectId": "fc286e3a-e38b-4fec-aac6-1f4919e63d14"
+          }
+        }
+      }
+    }
+preview_fim
+
+BUILD-CONFIG
+------------
+
+ARQUIVO: ./eas.json
+categoria: build-config
+tamanho_bytes: 379
+preview_inicio
+    {
+      "cli": {
+        "version": ">= 13.0.0"
+      },
+      "build": {
+        "development": {
+          "developmentClient": true,
+          "distribution": "internal"
+        },
+        "preview": {
+          "distribution": "internal",
+          "android": {
+            "buildType": "apk"
+          }
+        },
+        "production": {
+          "android": {
+            "buildType": "app-bundle"
+          }
+        }
+      }
+    }
+preview_fim
+
+NAVIGATION
+----------
+
+ARQUIVO: ./src/navigation/AppNavigator.js
+categoria: navigation
+tamanho_bytes: 3175
+imports: ../components/DrawerMenuButton, ../context/AuthContext, ../screens/DashboardScreen, ../screens/LessonLaunchesScreen, ../screens/LoginScreen, ../screens/LogsScreen, ../screens/MethodsScreen, ../screens/ReportsScreen, ../screens/SettingsScreen, ../screens/StudentDetailScreen, ../screens/StudentsScreen, ../screens/TeachersScreen, ../theme/ThemeProvider, @react-navigation/drawer, @react-navigation/native-stack, react, react-native
+exports: AppNavigator
+simbolos: Drawer, Stack, StudentsStack
+preview_inicio
+    import React from 'react';
+    import { ActivityIndicator, View } from 'react-native';
+    import { createDrawerNavigator } from '@react-navigation/drawer';
+    import { createNativeStackNavigator } from '@react-navigation/native-stack';
+    import { useAuth } from '../context/AuthContext';
+    import { useTheme } from '../theme/ThemeProvider';
+    
+    import LoginScreen from '../screens/LoginScreen';
+    import DashboardScreen from '../screens/DashboardScreen';
+    import StudentsScreen from '../screens/StudentsScreen';
+    import StudentDetailScreen from '../screens/StudentDetailScreen';
+    import ReportsScreen from '../screens/ReportsScreen';
+    import SettingsScreen from '../screens/SettingsScreen';
+    import MethodsScreen from '../screens/MethodsScreen';
+    import TeachersScreen from '../screens/TeachersScreen';
+    import LessonLaunchesScreen from '../screens/LessonLaunchesScreen';
+    import LogsScreen from '../screens/LogsScreen';
+    
+    import DrawerMenuButton from '../components/DrawerMenuButton';
+    
+    const Drawer = createDrawerNavigator();
+    const Stack = createNativeStackNavigator();
+    
+    function StudentsStack() {
+      const { theme } = useTheme();
+    
+      return (
+        <Stack.Navigator
+          screenOptions={({ navigation }) => ({
+            headerTitleAlign: 'left',
+            headerStyle: { backgroundColor: theme.colors.card },
+            headerTintColor: theme.colors.text,
+            headerLeft: () => <DrawerMenuButton navigation={navigation} color={theme.colors.text} />
+          })}
+        >
+          <Stack.Screen name="StudentsList" component={StudentsScreen} options={{ title: 'Alunos' }} />
+          <Stack.Screen name="StudentDetail" component={StudentDetailScreen} options={{ title: 'Aluno' }} />
+        </Stack.Navigator>
+      );
+    }
+preview_fim
+
+CONTEXT
+-------
+
+ARQUIVO: ./src/context/AuthContext.js
+categoria: context
+tamanho_bytes: 5285
+imports: ../lib/supabase, ../services/db, ../utils/logger, react
+exports: AuthProvider, useAuth
+simbolos: AuthContext, DEFAULT_ORG_CODE, ensureOrgMembership
+preview_inicio
+    // Para que serve: Auth + auto-entrada na equipe (ORG) para deixar TUDO coletivo automaticamente.
+    // Onde colar: substitua este arquivo no seu projeto em /src/context/AuthContext.js
+    //
+    // Como funciona:
+    // - O app entra automaticamente na equipe ao autenticar usando DEFAULT_ORG_CODE (GEMVGS-2026).
+    // - Assim, tudo no app vira coletivo sem passos extras.
+    
+    import React, { createContext, useContext, useEffect, useMemo, useState } from 'react';
+    import { supabase } from '../lib/supabase';
+    import { getMyProfile, upsertMyProfileName } from '../services/db';
+    import { logError, logInfo } from '../utils/logger';
+    
+    const AuthContext = createContext(null);
+    
+    // Você pode mudar aqui e/ou definir EXPO_PUBLIC_ORG_JOIN_CODE no .env/EAS Secrets
+    const DEFAULT_ORG_CODE = process.env.EXPO_PUBLIC_ORG_JOIN_CODE || 'GEMVGS-2026';
+    
+    async function ensureOrgMembership() {
+      try {
+        const { data: authData } = await supabase.auth.getUser();
+        const uid = authData?.user?.id;
+        if (!uid) return;
+    
+        const { data: prof, error: e1 } = await supabase
+          .from('profiles')
+          .select('org_id')
+          .eq('id', uid)
+          .single();
+    
+        if (e1) return;
+    
+        if (prof?.org_id) return;
+    
+        if (DEFAULT_ORG_CODE) {
+          const { error } = await supabase.rpc('join_org_by_code', { p_code: DEFAULT_ORG_CODE });
+          if (error) {
+            await logError('Auto join org failed', error, { code: DEFAULT_ORG_CODE });
+          } else {
+            await logInfo('Auto join org ok', { code: DEFAULT_ORG_CODE });
+          }
+preview_fim
+
+LIB
+---
+
+ARQUIVO: ./src/lib/supabase.js
+categoria: lib
+tamanho_bytes: 613
+imports: @react-native-async-storage/async-storage, @supabase/supabase-js
+exports: supabase
+simbolos: supabaseAnonKey, supabaseUrl
+preview_inicio
+    import AsyncStorage from '@react-native-async-storage/async-storage';
+    import { createClient } from '@supabase/supabase-js';
+    
+    const supabaseUrl = process.env.EXPO_PUBLIC_SUPABASE_URL;
+    const supabaseAnonKey = process.env.EXPO_PUBLIC_SUPABASE_ANON_KEY;
+    
+    if (!supabaseUrl || !supabaseAnonKey) {
+      console.warn('Defina EXPO_PUBLIC_SUPABASE_URL e EXPO_PUBLIC_SUPABASE_ANON_KEY no .env');
+    }
+    
+    export const supabase = createClient(supabaseUrl || '', supabaseAnonKey || '', {
+      auth: {
+        storage: AsyncStorage,
+        autoRefreshToken=<redacted>
+        persistSession: true,
+        detectSessionInUrl: false
+      }
+    });
+preview_fim
+
+SERVICE
+-------
+
+ARQUIVO: ./src/services/org.js
+categoria: service
+tamanho_bytes: 1168
+imports: ../lib/supabase
+exports: getMyOrg, joinOrgByCode
+simbolos: throwIfError
+preview_inicio
+    // Para que serve: funções para uso coletivo (entrar na equipe e ler organização atual).
+    // Onde colar: crie este arquivo em /src/services/org.js
+    
+    import { supabase } from '../lib/supabase';
+    
+    function throwIfError(error, ctx) {
+      if (!error) return;
+      const msg = ctx ? `${ctx}: ${error.message}` : error.message;
+      const e = new Error(msg);
+      e.original = error;
+      throw e;
+    }
+    
+    export async function joinOrgByCode(code) {
+      const { data, error } = await supabase.rpc('join_org_by_code', { p_code: code });
+      throwIfError(error, 'joinOrgByCode');
+      return Array.isArray(data) ? data[0] : data;
+    }
+    
+    export async function getMyOrg() {
+      const { data: authData } = await supabase.auth.getUser();
+      const uid = authData?.user?.id;
+      if (!uid) return null;
+    
+      const { data: prof, error: e1 } = await supabase
+        .from('profiles')
+        .select('org_id')
+        .eq('id', uid)
+        .single();
+    
+      throwIfError(e1, 'getMyOrg.profile');
+    
+      if (!prof?.org_id) return null;
+    
+      const { data: org, error: e2 } = await supabase
+        .from('organizations')
+        .select('id, name, join_code')
+        .eq('id', prof.org_id)
+        .single();
+    
+preview_fim
+
+ARQUIVO: ./src/services/db.js
+categoria: service
+tamanho_bytes: 10058
+imports: ../lib/supabase, ../utils/logger
+exports: deleteLesson, deleteMethod, deleteStudent, deleteTeacher, getDatasetForReports, getMyProfile, getRawBackupData, getStudentById, listLessonsByStudent, listMethods, listRecentLessons, listStudents, listStudentsBasic, listTeachers, saveLesson, saveMethod, saveStudent, saveTeacher, upsertMyProfileName
+simbolos: throwIfError
+preview_inicio
+    
+    import { supabase } from '../lib/supabase';
+    import { logError } from '../utils/logger'
+    
+    function throwIfError(error, context = 'DB') {
+      if (!error) return;
+      logError(`Supabase error: ${context}`, error, {
+        code: error.code,
+        details: error.details,
+        hint: error.hint,
+        message: error.message
+      });
+      throw error;
+    }
+    
+    
+    export async function getMyProfile() {
+      const { data: authData } = await supabase.auth.getUser();
+      const uid = authData?.user?.id;
+      if (!uid) return null;
+    
+      const { data, error } = await supabase
+        .from('profiles')
+        .select('*')
+        .eq('id', uid)
+        .single();
+    
+      if (error && error.code === 'PGRST116') return null;
+      throwIfError(error);
+      return data;
+    }
+    
+    export async function upsertMyProfileName(full_name) {
+      const { data: authData } = await supabase.auth.getUser();
+      const uid = authData?.user?.id;
+      if (!uid) throw new Error('Usuário não autenticado');
+    
+      const { error } = await supabase.from('profiles').upsert({
+        id: uid,
+        full_name,
+preview_fim
+
+UTILITY
+-------
+
+ARQUIVO: ./src/utils/exporters.js
+categoria: utility
+tamanho_bytes: 5822
+imports: expo-file-system/legacy, expo-print, expo-sharing, react-native-view-shot, xlsx
+exports: buildGroupReportHtml, buildIndividualReportHtml, exportChartAsImage, exportExcel, exportHtmlPdf, exportJsonBackup
+simbolos: shareIfPossible
+preview_inicio
+    import * as Print from 'expo-print';
+    import * as Sharing from 'expo-sharing';
+    import * as FileSystem from 'expo-file-system/legacy';
+    import * as XLSX from 'xlsx';
+    import { captureRef } from 'react-native-view-shot';
+    
+    async function shareIfPossible(uri, mimeType) {
+      const canShare = await Sharing.isAvailableAsync();
+      if (!canShare) return uri;
+      await Sharing.shareAsync(uri, mimeType ? { mimeType } : undefined);
+      return uri;
+    }
+    
+    export async function exportHtmlPdf({ html, fileName = 'relatorio.pdf' }) {
+      const { uri } = await Print.printToFileAsync({ html });
+      return shareIfPossible(uri, 'application/pdf');
+    }
+    
+    export async function exportExcel({ rows, sheetName = 'Dados', fileName = 'relatorio.xlsx' }) {
+      const wb = XLSX.utils.book_new();
+      const ws = XLSX.utils.json_to_sheet(rows);
+      XLSX.utils.book_append_sheet(wb, ws, sheetName);
+    
+      const base64 = XLSX.write(wb, { type: 'base64', bookType: 'xlsx' });
+      const uri = `${FileSystem.cacheDirectory}${fileName}`;
+      await FileSystem.writeAsStringAsync(uri, base64, { encoding: FileSystem.EncodingType.Base64 });
+    
+      return shareIfPossible(uri, 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+    }
+    
+    export async function exportJsonBackup(data, fileName = 'gem-backup.json') {
+      const uri = `${FileSystem.cacheDirectory}${fileName}`;
+      await FileSystem.writeAsStringAsync(uri, JSON.stringify(data, null, 2), {
+        encoding: FileSystem.EncodingType.UTF8
+      });
+      return shareIfPossible(uri, 'application/json');
+    }
+    
+    export async function exportChartAsImage(viewRef, fileName = 'grafico.png') {
+      const uriCaptured = await captureRef(viewRef, { format: 'png', quality: 1 });
+preview_fim
+
+ARQUIVO: ./src/utils/logger.js
+categoria: utility
+tamanho_bytes: 2212
+imports: @react-native-async-storage/async-storage, expo-file-system, expo-sharing
+exports: clearLogs, exportLogsTxt, getLogs, logError, logEvent, logInfo, logWarn
+simbolos: KEY, MAX, readAll, safeJson, writeAll
+preview_inicio
+    import AsyncStorage from '@react-native-async-storage/async-storage';
+    import * as FileSystem from 'expo-file-system';
+    import * as Sharing from 'expo-sharing';
+    
+    const KEY = 'gem_logs_v1';
+    const MAX = 800;
+    
+    function safeJson(obj) {
+      try { return JSON.stringify(obj); } catch { return String(obj); }
+    }
+    
+    async function readAll() {
+      const raw = await AsyncStorage.getItem(KEY);
+      if (!raw) return [];
+      try { return JSON.parse(raw); } catch { return []; }
+    }
+    
+    async function writeAll(list) {
+      const trimmed = list.slice(-MAX);
+      await AsyncStorage.setItem(KEY, JSON.stringify(trimmed));
+      return trimmed;
+    }
+    
+    export async function getLogs() {
+      return readAll();
+    }
+    
+    export async function clearLogs() {
+      await AsyncStorage.removeItem(KEY);
+    }
+    
+    export async function logEvent(level, message, meta) {
+      const entry = {
+        ts: new Date().toISOString(),
+        level,
+        message,
+        meta: meta ?? null
+      };
+    
+      // Terminal (Metro) — aparece no VSCode
+preview_fim
+
+ARQUIVO: ./src/utils/analytics.js
+categoria: utility
+tamanho_bytes: 9154
+imports: dayjs
+exports: buildGroupAnalytics, buildStudentAnalytics, conceptToScore, getLessonScore
+simbolos: avg, daysBetween, groupByMonth, monthLabel, movingAverage
+preview_inicio
+    import dayjs from 'dayjs';
+    
+    export function conceptToScore(concept) {
+      const map = {
+        excelente: 9,
+        bom: 7.5,
+        regular: 5.5,
+        ruim: 3.5
+      };
+      if (!concept) return null;
+      return map[String(concept).toLowerCase()] ?? null;
+    }
+    
+    export function getLessonScore(lesson) {
+      if (lesson.performance_score != null && lesson.performance_score !== '') return Number(lesson.performance_score);
+      return conceptToScore(lesson.performance_concept);
+    }
+    
+    function avg(arr) {
+      const valid = arr.filter(v => Number.isFinite(v));
+      if (!valid.length) return 0;
+      return valid.reduce((a, b) => a + b, 0) / valid.length;
+    }
+    
+    function groupByMonth(items, dateField) {
+      const out = {};
+      for (const item of items) {
+        const d = item?.[dateField];
+        if (!d) continue;
+        const key = dayjs(d).format('YYYY-MM');
+        out[key] = out[key] || [];
+        out[key].push(item);
+      }
+      return out;
+    }
+    
+    function monthLabel(yyyyMm) {
+      return dayjs(`${yyyyMm}-01`).format('MM/YY');
+    }
+    
+preview_fim
+
+ARQUIVO: ./src/utils/errorHandler.js
+categoria: utility
+tamanho_bytes: 657
+imports: ./logger
+exports: installGlobalErrorHandlers
+preview_inicio
+    import { logError, logWarn } from './logger';
+    
+    export function installGlobalErrorHandlers() {
+      try {
+        const ErrorUtilsRef = global?.ErrorUtils;
+        if (ErrorUtilsRef?.getGlobalHandler && ErrorUtilsRef?.setGlobalHandler) {
+          const defaultHandler = ErrorUtilsRef.getGlobalHandler();
+          ErrorUtilsRef.setGlobalHandler((error, isFatal) => {
+            logError('JS Fatal Error', error, { isFatal: !!isFatal });
+            if (defaultHandler) defaultHandler(error, isFatal);
+          });
+        } else {
+          logWarn('ErrorUtils não disponível: handler global pode não capturar tudo.');
+        }
+      } catch (e) {
+        // não deixa quebrar
+      }
+    }
+preview_fim
+
+THEME
+-----
+
+ARQUIVO: ./src/theme/ThemeProvider.js
+categoria: theme
+tamanho_bytes: 1951
+imports: @react-native-async-storage/async-storage, react, react-native
+exports: ThemeProvider, useTheme
+simbolos: dark, KEY, light, ThemeContext
+preview_inicio
+    import React, { createContext, useContext, useEffect, useMemo, useState } from 'react';
+    import AsyncStorage from '@react-native-async-storage/async-storage';
+    import { useColorScheme } from 'react-native';
+    
+    const KEY = 'maestro_theme_mode'; // 'system' | 'dark' | 'light'
+    
+    const light = {
+      mode: 'light',
+      colors: {
+        bg: '#f5f7fb',
+        card: '#ffffff',
+        border: '#e5e7eb',
+        text: '#0f172a',
+        textMuted: '#475569',
+        inputBg: '#ffffff',
+        inputText: '#0f172a',
+        placeholder: '#6b7280',
+        accent: '#1d4ed8',
+        danger: '#ef4444',
+        chipBg: '#e0e7ff',
+        chipText: '#1e3a8a'
+      }
+    };
+    
+    const dark = {
+      mode: 'dark',
+      colors: {
+        bg: '#0b1220',
+        card: '#111827',
+        border: '#1f2937',
+        text: '#e5e7eb',
+        textMuted: '#94a3b8',
+        inputBg: '#0f172a',
+        inputText: '#e5e7eb',
+        placeholder: '#94a3b8',
+        accent: '#3b82f6',
+        danger: '#f87171',
+        chipBg: '#1f2a44',
+        chipText: '#c7d2fe'
+      }
+preview_fim
+
+DATA
+----
+
+ARQUIVO: ./src/data/catalogs.js
+categoria: data
+tamanho_bytes: 2293
+exports: buildContentNumberOptions, CONGREGATIONS, CONTENT_GROUPS, getFamilyByInstrument, GRADUATIONS, INSTRUMENTS, TEACHER_ROLES, VOICES
+preview_inicio
+    export const INSTRUMENTS = [
+      { label: 'Violino', family: 'Cordas' },
+      { label: 'Viola', family: 'Cordas' },
+      { label: 'Violoncelo', family: 'Cordas' },
+    
+      { label: 'Barítono (Pisto)', family: 'Metais' },
+      { label: 'Cornet', family: 'Metais' },
+      { label: 'Eufônio', family: 'Metais' },
+      { label: 'Flugelhorn', family: 'Metais' },
+      { label: 'Trombone', family: 'Metais' },
+      { label: 'Trombonito', family: 'Metais' },
+      { label: 'Trompa', family: 'Metais' },
+      { label: 'Trompete', family: 'Metais' },
+      { label: 'Tuba', family: 'Metais' },
+    
+      { label: 'Clarinete', family: 'Madeiras' },
+      { label: 'Clarinete Alto', family: 'Madeiras' },
+      { label: 'Clarinete Baixo (Clarone)', family: 'Madeiras' },
+      { label: 'Flauta', family: 'Madeiras' },
+      { label: 'Corne Inglês', family: 'Madeiras' },
+      { label: 'Fagote', family: 'Madeiras' },
+      { label: 'Oboé', family: 'Madeiras' },
+      { label: "Oboé D'Amore", family: 'Madeiras' },
+      { label: 'Saxofone Soprano (Reto)', family: 'Madeiras' },
+      { label: 'Saxofone Alto', family: 'Madeiras' },
+      { label: 'Saxofone Tenor', family: 'Madeiras' },
+      { label: 'Saxofone Barítono', family: 'Madeiras' }
+    ];
+    
+    export const GRADUATIONS = [
+      'Aluno',
+      'Toca nos Ensaios',
+      'Toca nas RJM',
+      'Toca nos Cultos Oficiais',
+      'Oficializado'
+    ];
+    
+    export const CONGREGATIONS = [
+      'Jardim São Gabriel - Vargem Grande do Sul',
+      'Jardim Santa Marta - Vargem Grande do Sul',
+preview_fim
+
+SCREEN
+------
+
+ARQUIVO: ./src/screens/SettingsScreen.js
+categoria: screen
+tamanho_bytes: 8162
+imports: ../components/SelectModal, ../context/AuthContext, ../services/db, ../services/org, ../theme/ThemeProvider, ../utils/exporters, @react-native-async-storage/async-storage, react, react-native
+exports: SettingsScreen
+simbolos: KEY_ALERT_DAYS, makeStyles
+preview_inicio
+    // Para que serve: Configurações com seção "Equipe" (mostra organização e permite entrar por código).
+    // Onde colar: substitua este arquivo no seu projeto em /src/screens/SettingsScreen.js
+    
+    import React, { useEffect, useState } from 'react';
+    import { Alert, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+    import AsyncStorage from '@react-native-async-storage/async-storage';
+    import { useAuth } from '../context/AuthContext';
+    import { getRawBackupData } from '../services/db';
+    import { exportJsonBackup } from '../utils/exporters';
+    import { useTheme } from '../theme/ThemeProvider';
+    import SelectModal from '../components/SelectModal';
+    import { getMyOrg, joinOrgByCode } from '../services/org';
+    
+    const KEY_ALERT_DAYS = 'gem_alert_days';
+    
+    export default function SettingsScreen() {
+      const { theme, mode, setMode } = useTheme();
+      const styles = makeStyles(theme);
+    
+      const { user, profile, signOut, refreshProfile, saveProfileName } = useAuth();
+      const [fullName, setFullName] = useState(profile?.full_name || '');
+      const [alertDays, setAlertDays] = useState('21');
+      const [loading, setLoading] = useState(false);
+    
+      const [orgInfo, setOrgInfo] = useState(null);
+      const [orgCode, setOrgCode] = useState('');
+    
+      useEffect(() => {
+        setFullName(profile?.full_name || '');
+      }, [profile?.full_name]);
+    
+      useEffect(() => {
+        AsyncStorage.getItem(KEY_ALERT_DAYS).then(v => {
+          if (v) setAlertDays(v);
+        });
+      }, []);
+    
+      useEffect(() => {
+        (async () => {
+          try {
+preview_fim
+
+ARQUIVO: ./src/screens/ReportsScreen.js
+categoria: screen
+tamanho_bytes: 9067
+imports: ../components/KpiCard, ../services/db, ../theme/ThemeProvider, ../utils/analytics, ../utils/exporters, @react-navigation/native, dayjs, react, react-native, react-native-chart-kit, react-native-view-shot
+exports: ReportsScreen
+simbolos: chartWidth, makeStyles
+preview_inicio
+    import React, { useCallback, useMemo, useRef, useState } from 'react';
+    import { Alert, Dimensions, RefreshControl, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+    import { useFocusEffect } from '@react-navigation/native';
+    import dayjs from 'dayjs';
+    import { BarChart, LineChart } from 'react-native-chart-kit';
+    import ViewShot from 'react-native-view-shot';
+    
+    import { getDatasetForReports } from '../services/db';
+    import { buildGroupAnalytics } from '../utils/analytics';
+    import { buildGroupReportHtml, exportChartAsImage, exportExcel, exportHtmlPdf } from '../utils/exporters';
+    import KpiCard from '../components/KpiCard';
+    import { useTheme } from '../theme/ThemeProvider';
+    
+    const chartWidth = Dimensions.get('window').width - 32;
+    
+    export default function ReportsScreen() {
+      const { theme } = useTheme();
+      const styles = makeStyles(theme);
+    
+      const chartConfig = useMemo(() => ({
+        backgroundGradientFrom: theme.colors.card,
+        backgroundGradientTo: theme.colors.card,
+        decimalPlaces: 1,
+        color: (o = 1) => `rgba(59, 130, 246, ${o})`,
+        labelColor: (o = 1) => `rgba(148, 163, 184, ${o})`,
+        propsForDots: { r: '3' }
+      }), [theme]);
+    
+      const [filters, setFilters] = useState({
+        from: dayjs().subtract(6, 'month').format('YYYY-MM-DD'),
+        to: dayjs().format('YYYY-MM-DD'),
+        instrument: '',
+        category: '',
+        instructor_id: ''
+      });
+    
+      const [dataset, setDataset] = useState({ students: [], lessons: [] });
+      const [loading, setLoading] = useState(false);
+      const chartRef = useRef(null);
+    
+preview_fim
+
+ARQUIVO: ./src/screens/StudentDetailScreen.js
+categoria: screen
+tamanho_bytes: 14971
+imports: ../components/SelectModal, ../services/db, ../theme/ThemeProvider, @react-navigation/native, dayjs, react
+exports: StudentsScreen
+simbolos: emptyForm, initialFilters, makeStyles
+preview_inicio
+    import React, { useCallback, useState, useMemo } from 'react';
+    import {
+      Alert,
+      FlatList,
+      Modal,
+      RefreshControl,
+      ScrollView,
+      StyleSheet,
+      Text,
+      TextInput,
+      TouchableOpacity,
+      View
+    } from 'react-native';
+    import { useFocusEffect } from '@react-navigation/native';
+    import dayjs from 'dayjs';
+    
+    import { deleteStudent, listStudents, saveStudent } from '../services/db';
+    import SelectModal from '../components/SelectModal';
+    import {
+      CONGREGATIONS,
+      GRADUATIONS,
+      INSTRUMENTS,
+      getFamilyByInstrument
+    } from '../data/catalogs';
+    import { useTheme } from '../theme/ThemeProvider';
+    
+    const emptyForm = {
+      id: null,
+      full_name: '',
+      category: '',
+      instrument: '',
+      level: '',
+      start_date: dayjs().format('YYYY-MM-DD'),
+      status: 'ativo',
+      observations: '',
+      congregation: '',
+      address: '',
+      phone: '',
+      birth_date: '',
+      baptism_date: '',
+preview_fim
+
+ARQUIVO: ./src/screens/TeachersScreen.js
+categoria: screen
+tamanho_bytes: 7679
+imports: ../components/SelectModal, ../data/catalogs, ../services/db, ../theme/ThemeProvider, @react-navigation/native, react, react-native
+exports: TeachersScreen
+simbolos: emptyForm, makeStyles
+preview_inicio
+    import React, { useCallback, useMemo, useState } from 'react';
+    import { Alert, FlatList, Modal, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+    import { useFocusEffect } from '@react-navigation/native';
+    
+    import { deleteTeacher, listTeachers, saveTeacher } from '../services/db';
+    import SelectModal from '../components/SelectModal';
+    import { CONGREGATIONS, INSTRUMENTS, TEACHER_ROLES } from '../data/catalogs';
+    import { useTheme } from '../theme/ThemeProvider';
+    
+    const emptyForm = { id: null, full_name: '', instrument: '', congregation: '', role_kind: 'Instrutor', active: true };
+    
+    export default function TeachersScreen() {
+      const { theme } = useTheme();
+      const styles = makeStyles(theme);
+    
+      const [teachers, setTeachers] = useState([]);
+      const [modalVisible, setModalVisible] = useState(false);
+      const [form, setForm] = useState(emptyForm);
+      const [customCongregation, setCustomCongregation] = useState('');
+    
+      const instrumentOptions = useMemo(() => INSTRUMENTS.map((i) => ({ label: i.label, value: i.label })), []);
+      const congregationOptions = useMemo(() => CONGREGATIONS.map((v) => ({ label: v, value: v })), []);
+      const rolesOptions = useMemo(() => TEACHER_ROLES.map((v) => ({ label: v, value: v })), []);
+    
+      const load = useCallback(async () => {
+        try {
+          const data = await listTeachers();
+          setTeachers(data);
+        } catch (e) {
+          Alert.alert('Erro', e.message || 'Falha ao carregar professores.');
+        }
+      }, []);
+    
+      useFocusEffect(useCallback(() => { load(); }, [load]));
+    
+      const openNew = () => {
+        setForm(emptyForm);
+        setCustomCongregation('');
+        setModalVisible(true);
+      };
+preview_fim
+
+ARQUIVO: ./src/screens/StudentsScreen.js
+categoria: screen
+tamanho_bytes: 15546
+imports: ../components/SelectModal, ../services/db, ../theme/ThemeProvider, @react-navigation/native, dayjs, react
+exports: StudentsScreen
+simbolos: emptyForm, initialFilters, makeStyles
+preview_inicio
+    import React, { useCallback, useState, useMemo } from 'react';
+    import {
+      Alert,
+      FlatList,
+      Modal,
+      RefreshControl,
+      ScrollView,
+      StyleSheet,
+      Text,
+      TextInput,
+      TouchableOpacity,
+      View
+    } from 'react-native';
+    import { useFocusEffect } from '@react-navigation/native';
+    import dayjs from 'dayjs';
+    
+    import { deleteStudent, listStudents, saveStudent } from '../services/db';
+    import SelectModal from '../components/SelectModal';
+    import {
+      CONGREGATIONS,
+      GRADUATIONS,
+      INSTRUMENTS,
+      getFamilyByInstrument
+    } from '../data/catalogs';
+    import { useTheme } from '../theme/ThemeProvider';
+    
+    const emptyForm = {
+      id: null,
+      full_name: '',
+      category: '',
+      instrument: '',
+      level: '',
+      start_date: dayjs().format('YYYY-MM-DD'),
+      status: 'ativo',
+      observations: '',
+      congregation: '',
+      address: '',
+      phone: '',
+      birth_date: '',
+      baptism_date: '',
+preview_fim
+
+ARQUIVO: ./src/screens/MethodsScreen.js
+categoria: screen
+tamanho_bytes: 8062
+imports: ../components/SelectModal, ../data/catalogs, ../services/db, ../theme/ThemeProvider, @react-navigation/native, react, react-native
+exports: MethodsScreen
+simbolos: emptyForm, makeStyles
+preview_inicio
+    import React, { useCallback, useMemo, useState } from 'react';
+    import { Alert, FlatList, Modal, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+    import { useFocusEffect } from '@react-navigation/native';
+    
+    import { deleteMethod, listMethods, saveMethod } from '../services/db';
+    import SelectModal from '../components/SelectModal';
+    import { INSTRUMENTS } from '../data/catalogs';
+    import { useTheme } from '../theme/ThemeProvider';
+    
+    const emptyForm = { id: null, name: '', instruments: [], active: true, notes: '' };
+    
+    export default function MethodsScreen() {
+      const { theme } = useTheme();
+      const styles = makeStyles(theme);
+    
+      const [methods, setMethods] = useState([]);
+      const [modalVisible, setModalVisible] = useState(false);
+      const [form, setForm] = useState(emptyForm);
+      const [instrumentToAdd, setInstrumentToAdd] = useState('');
+    
+      const instrumentOptions = useMemo(() => INSTRUMENTS.map((i) => ({ label: i.label, value: i.label })), []);
+    
+      const load = useCallback(async () => {
+        try {
+          const data = await listMethods();
+          setMethods(data);
+        } catch (e) {
+          Alert.alert('Erro', e.message || 'Falha ao carregar métodos.');
+        }
+      }, []);
+    
+      useFocusEffect(useCallback(() => { load(); }, [load]));
+    
+      const openNew = () => {
+        setForm(emptyForm);
+        setInstrumentToAdd('');
+        setModalVisible(true);
+      };
+    
+      const openEdit = (item) => {
+preview_fim
+
+ARQUIVO: ./src/screens/LessonFormScreen.js
+categoria: screen
+tamanho_bytes: 5824
+imports: ../services/db, dayjs, react, react-native
+exports: LessonFormScreen
+simbolos: styles
+preview_inicio
+    import React, { useState } from 'react';
+    import { Alert, ScrollView, StyleSheet, Switch, Text, TextInput, TouchableOpacity, View } from 'react-native';
+    import dayjs from 'dayjs';
+    import { saveLesson } from '../services/db';
+    
+    export default function LessonFormScreen({ route, navigation }) {
+      const { studentId } = route.params;
+    
+      const [form, setForm] = useState({
+        student_id: studentId,
+        lesson_date: dayjs().format('YYYY-MM-DD'),
+        method_name: '',
+        pages: '',
+        lesson_name: '',
+        hymns: '',
+        technical_notes: '',
+        performance_score: '',
+        performance_concept: '',
+        difficulty_observed: '',
+        strengths: '',
+        attendance: true,
+        skill_rhythm: '',
+        skill_reading: '',
+        skill_technique: '',
+        skill_posture: '',
+        skill_musicality: ''
+      });
+      const [saving, setSaving] = useState(false);
+    
+      const onSave = async () => {
+        try {
+          setSaving(true);
+          await saveLesson(form);
+          Alert.alert('Sucesso', 'Registro de aula salvo.');
+          navigation.goBack();
+        } catch (e) {
+          Alert.alert('Erro', e.message || 'Falha ao salvar aula.');
+        } finally {
+          setSaving(false);
+        }
+preview_fim
+
+ARQUIVO: ./src/screens/DashboardScreen.js
+categoria: screen
+tamanho_bytes: 5582
+imports: ../components/KpiCard, ../services/db, ../theme/ThemeProvider, ../utils/analytics, @react-navigation/native, dayjs, react, react-native, react-native-chart-kit
+exports: DashboardScreen
+simbolos: chartWidth, makeStyles
+preview_inicio
+    import React, { useCallback, useMemo, useState } from 'react';
+    import { Alert, Dimensions, RefreshControl, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+    import { useFocusEffect } from '@react-navigation/native';
+    import dayjs from 'dayjs';
+    import { LineChart, BarChart } from 'react-native-chart-kit';
+    
+    import { getDatasetForReports } from '../services/db';
+    import { buildGroupAnalytics } from '../utils/analytics';
+    import KpiCard from '../components/KpiCard';
+    import { useTheme } from '../theme/ThemeProvider';
+    
+    const chartWidth = Dimensions.get('window').width - 32;
+    
+    export default function DashboardScreen({ navigation }) {
+      const { theme } = useTheme();
+      const styles = makeStyles(theme);
+    
+      const chartConfig = useMemo(() => ({
+        backgroundGradientFrom: theme.colors.card,
+        backgroundGradientTo: theme.colors.card,
+        decimalPlaces: 1,
+        color: (o = 1) => `rgba(59, 130, 246, ${o})`,
+        labelColor: (o = 1) => `rgba(148, 163, 184, ${o})`,
+        propsForDots: { r: '3' }
+      }), [theme]);
+    
+      const [loading, setLoading] = useState(false);
+      const [dataset, setDataset] = useState({ students: [], lessons: [] });
+    
+      const load = useCallback(async () => {
+        try {
+          setLoading(true);
+          const from = dayjs().subtract(12, 'month').format('YYYY-MM-DD');
+          const to = dayjs().format('YYYY-MM-DD');
+          const data = await getDatasetForReports({ from, to });
+          setDataset(data);
+        } catch (e) {
+          Alert.alert('Erro', e.message || 'Falha ao carregar dashboard.');
+        } finally {
+          setLoading(false);
+preview_fim
+
+ARQUIVO: ./src/screens/LessonLaunchesScreen.js
+categoria: screen
+tamanho_bytes: 18955
+imports: ../components/SelectModal, ../data/catalogs, ../services/db, ../theme/ThemeProvider, @react-navigation/native, dayjs, react, react-native
+exports: LessonLaunchesScreen
+simbolos: makeStyles
+preview_inicio
+    import React, { useCallback, useMemo, useState } from 'react';
+    import { Alert, FlatList, StyleSheet, Switch, Text, TextInput, TouchableOpacity, View } from 'react-native';
+    import { useFocusEffect } from '@react-navigation/native';
+    import dayjs from 'dayjs';
+    
+    import SelectModal from '../components/SelectModal';
+    import { useTheme } from '../theme/ThemeProvider';
+    import { listMethods, listRecentLessons, listStudentsBasic, listTeachers, saveLesson } from '../services/db';
+    import { buildContentNumberOptions, CONTENT_GROUPS, VOICES } from '../data/catalogs';
+    
+    export default function LessonLaunchesScreen() {
+      const { theme } = useTheme();
+      const styles = makeStyles(theme);
+    
+      const [students, setStudents] = useState([]);
+      const [teachers, setTeachers] = useState([]);
+      const [methods, setMethods] = useState([]);
+      const [recentLessons, setRecentLessons] = useState([]);
+      const [saving, setSaving] = useState(false);
+    
+      // Form principal
+      const [form, setForm] = useState({
+        student_id: '',
+        teacher_id: '',
+        method_id: '',
+        lesson_date: dayjs().format('YYYY-MM-DD'),
+        technical_notes: '',
+        attendance: true,
+    
+        // multi
+        content_items: [], // [{type:'hino'|'coro', number: 1.., voices:[], solfejo:boolean}]
+        page_items: [], // ['10-12', '13']
+        lesson_items: [] // ['Lição 1', 'Lição 2'] ou ['1','2']
+      });
+    
+      // inputs auxiliares (para adicionar item)
+      const [contentType, setContentType] = useState('');
+      const [contentNumber, setContentNumber] = useState('');
+      const [voices, setVoices] = useState([]);
+      const [solfejo, setSolfejo] = useState(false);
+preview_fim
+
+ARQUIVO: ./src/screens/LogsScreen.js
+categoria: screen
+tamanho_bytes: 3281
+imports: ../theme/ThemeProvider, ../utils/logger, @react-navigation/native, react, react-native
+exports: LogsScreen
+simbolos: makeStyles
+preview_inicio
+    import React, { useCallback, useState } from 'react';
+    import { Alert, FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+    import { useFocusEffect } from '@react-navigation/native';
+    import { clearLogs, exportLogsTxt, getLogs } from '../utils/logger';
+    import { useTheme } from '../theme/ThemeProvider';
+    
+    export default function LogsScreen() {
+      const { theme } = useTheme();
+      const styles = makeStyles(theme);
+    
+      const [logs, setLogs] = useState([]);
+    
+      const load = useCallback(async () => {
+        const data = await getLogs();
+        setLogs(data.reverse());
+      }, []);
+    
+      useFocusEffect(useCallback(() => { load(); }, [load]));
+    
+      const onClear = async () => {
+        Alert.alert('Limpar logs', 'Deseja apagar todos os logs?', [
+          { text: 'Cancelar', style: 'cancel' },
+          { text: 'Apagar', style: 'destructive', onPress: async () => { await clearLogs(); await load(); } }
+        ]);
+      };
+    
+      const onExport = async () => {
+        try {
+          await exportLogsTxt();
+        } catch (e) {
+          Alert.alert('Erro', e.message || 'Falha ao exportar logs.');
+        }
+      };
+    
+      return (
+        <View style={{ flex: 1, backgroundColor: theme.colors.bg }}>
+          <View style={styles.header}>
+            <Text style={styles.title}>Logs</Text>
+            <View style={styles.row}>
+              <TouchableOpacity style={styles.btn} onPress={load}><Text style={styles.btnText}>Atualizar</Text></TouchableOpacity>
+preview_fim
+
+ARQUIVO: ./src/screens/LoginScreen.js
+categoria: screen
+tamanho_bytes: 8095
+imports: ../context/AuthContext, ../theme/ThemeProvider, react
+exports: LoginScreen
+simbolos: makeStyles
+preview_inicio
+    // Para que serve: Tela de login/cadastro com opção "Entrar sem e-mail (convidado)" para evitar limite de emails do Supabase.
+    // Onde colar: substitua este arquivo no seu projeto em /src/screens/LoginScreen.js
+    
+    import React, { useState } from 'react';
+    import {
+      Alert,
+      KeyboardAvoidingView,
+      Platform,
+      StyleSheet,
+      Text,
+      TextInput,
+      TouchableOpacity,
+      View
+    } from 'react-native';
+    import { useAuth } from '../context/AuthContext';
+    import { useTheme } from '../theme/ThemeProvider';
+    
+    export default function LoginScreen() {
+      const { signIn, signUp, signInAnonymous } = useAuth();
+      const { theme } = useTheme();
+      const styles = makeStyles(theme);
+    
+      const [mode, setMode] = useState('login'); // 'login' | 'signup'
+      const [fullName, setFullName] = useState('');
+      const [email, setEmail] = useState('');
+      const [password, setPassword] = useState('');
+      const [loading, setLoading] = useState(false);
+    
+      const onLogin = async () => {
+        try {
+          setLoading(true);
+          await signIn(email.trim(), password);
+        } catch (e) {
+          Alert.alert('Erro', e.message || 'Não foi possível entrar.');
+        } finally {
+          setLoading(false);
+        }
+      };
+    
+      const onSignup = async () => {
+preview_fim
+
+COMPONENT
+---------
+
+ARQUIVO: ./src/components/RadarChart.js
+categoria: component
+tamanho_bytes: 2646
+imports: ../theme/ThemeProvider, react, react-native, react-native-svg
+exports: RadarChart
+preview_inicio
+    import React from 'react';
+    import { View, Text } from 'react-native';
+    import Svg, { Polygon, Circle, Line, Text as SvgText } from 'react-native-svg';
+    import { useTheme } from '../theme/ThemeProvider';
+    
+    export default function RadarChart({ data = {}, size = 260 }) {
+      const { theme } = useTheme();
+    
+      const labels = Object.keys(data);
+      const values = labels.map(k => Number(data[k] || 0));
+      const max = 10;
+      const cx = size / 2;
+      const cy = size / 2;
+      const radius = size * 0.34;
+      const levels = 5;
+    
+      if (!labels.length) {
+        return (
+          <View style={{ alignItems: 'center', justifyContent: 'center', height: size }}>
+            <Text style={{ color: theme.colors.textMuted }}>Sem dados de habilidades ainda.</Text>
+          </View>
+        );
+      }
+    
+      const angleStep = (Math.PI * 2) / labels.length;
+      const pointAt = (value, idx) => {
+        const angle = -Math.PI / 2 + idx * angleStep;
+        const r = (value / max) * radius;
+        return [cx + Math.cos(angle) * r, cy + Math.sin(angle) * r];
+      };
+    
+      const polygonPoints = values.map((v, i) => pointAt(v, i).join(',')).join(' ');
+    
+      return (
+        <View style={{ alignItems: 'center' }}>
+          <Svg width={size} height={size}>
+            {[...Array(levels)].map((_, i) => {
+              const levelValue = ((i + 1) / levels) * max;
+              const ringPoints = labels.map((_, idx) => pointAt(levelValue, idx).join(',')).join(' ');
+              return (
+preview_fim
+
+ARQUIVO: ./src/components/SelectModal.js
+categoria: component
+tamanho_bytes: 5371
+imports: ../theme/ThemeProvider, react
+exports: SelectModal
+simbolos: makeStyles
+preview_inicio
+    import React, { useMemo, useState } from 'react';
+    import {
+      Modal,
+      FlatList,
+      Pressable,
+      StyleSheet,
+      Text,
+      TextInput,
+      TouchableOpacity,
+      View
+    } from 'react-native';
+    import { useTheme } from '../theme/ThemeProvider';
+    
+    export default function SelectModal({
+      label,
+      value,
+      options,
+      onChange,
+      placeholder = 'Selecionar',
+      searchable = true,
+      allowClear = true
+    }) {
+      const { theme } = useTheme();
+      const styles = makeStyles(theme);
+    
+      const [open, setOpen] = useState(false);
+      const [search, setSearch] = useState('');
+    
+      const selectedLabel = useMemo(() => {
+        const found = options?.find((o) => o.value === value);
+        return found?.label || '';
+      }, [options, value]);
+    
+      const filtered = useMemo(() => {
+        if (!searchable) return options || [];
+        const q = search.trim().toLowerCase();
+        if (!q) return options || [];
+        return (options || []).filter((o) => String(o.label).toLowerCase().includes(q));
+      }, [options, search, searchable]);
+    
+preview_fim
+
+ARQUIVO: ./src/components/KpiCard.js
+categoria: component
+tamanho_bytes: 1049
+imports: ../theme/ThemeProvider, react, react-native
+exports: KpiCard
+simbolos: makeStyles
+preview_inicio
+    import React from 'react';
+    import { View, Text, StyleSheet } from 'react-native';
+    import { useTheme } from '../theme/ThemeProvider';
+    
+    export default function KpiCard({ title, value, subtitle }) {
+      const { theme } = useTheme();
+      const styles = makeStyles(theme);
+    
+      return (
+        <View style={styles.card}>
+          <Text style={styles.title}>{title}</Text>
+          <Text style={styles.value}>{value ?? '-'}</Text>
+          {!!subtitle && <Text style={styles.subtitle}>{subtitle}</Text>}
+        </View>
+      );
+    }
+    
+    function makeStyles(theme) {
+      return StyleSheet.create({
+        card: {
+          backgroundColor: theme.colors.card,
+          borderRadius: 14,
+          padding: 12,
+          marginBottom: 10,
+          borderWidth: 1,
+          borderColor: theme.colors.border
+        },
+        title: { fontSize: 12, color: theme.colors.textMuted, fontWeight: '700' },
+        value: { fontSize: 22, fontWeight: '900', color: theme.colors.text, marginTop: 4 },
+        subtitle: { fontSize: 11, color: theme.colors.textMuted, marginTop: 4, fontWeight: '600' }
+      });
+    }
+preview_fim
+
+ARQUIVO: ./src/components/DrawerMenuButton.js
+categoria: component
+tamanho_bytes: 604
+imports: react, react-native
+exports: DrawerMenuButton
+simbolos: styles
+preview_inicio
+    import React from 'react';
+    import { TouchableOpacity, Text, StyleSheet } from 'react-native';
+    
+    export default function DrawerMenuButton({ navigation, color = '#111' }) {
+      return (
+        <TouchableOpacity
+          style={styles.btn}
+          onPress={() => navigation.getParent()?.openDrawer?.()}
+          hitSlop={{ top: 12, bottom: 12, left: 12, right: 12 }}
+        >
+          <Text style={[styles.icon, { color }]}>{'☰'}</Text>
+        </TouchableOpacity>
+      );
+    }
+    
+    const styles = StyleSheet.create({
+      btn: { paddingHorizontal: 12, paddingVertical: 6 },
+      icon: { fontSize: 20, fontWeight: '800' }
+    });
+preview_fim
+
+ARQUIVO: ./src/components/ErrorBoundary.js
+categoria: component
+tamanho_bytes: 1290
+imports: ../utils/logger, react, react-native
+exports: ErrorBoundary
+preview_inicio
+    import React from 'react';
+    import { View, Text, TouchableOpacity } from 'react-native';
+    import { logError } from '../utils/logger';
+    
+    export default class ErrorBoundary extends React.Component {
+      constructor(props) {
+        super(props);
+        this.state = { hasError: false, message: '' };
+      }
+    
+      static getDerivedStateFromError(error) {
+        return { hasError: true, message: error?.message || 'Erro inesperado' };
+      }
+    
+      componentDidCatch(error, info) {
+        logError('Render ErrorBoundary', error, { componentStack: info?.componentStack || null });
+      }
+    
+      render() {
+        if (!this.state.hasError) return this.props.children;
+    
+        return (
+          <View style={{ flex: 1, padding: 16, justifyContent: 'center' }}>
+            <Text style={{ fontSize: 18, fontWeight: '800', marginBottom: 8 }}>O app encontrou um erro</Text>
+            <Text style={{ color: '#374151', marginBottom: 14 }}>{this.state.message}</Text>
+            <TouchableOpacity
+              style={{ backgroundColor: '#111827', padding: 12, borderRadius: 10, alignItems: 'center' }}
+              onPress={() => this.setState({ hasError: false, message: '' })}
+            >
+              <Text style={{ color: '#fff', fontWeight: '800' }}>Tentar continuar</Text>
+            </TouchableOpacity>
+          </View>
+        );
+      }
+    }
+preview_fim
+
+SUPABASE
+--------
+
+ARQUIVO: ./supabase/schema.sql
+categoria: supabase
+tamanho_bytes: 10883
+preview_inicio
+    -- GEM - Grupo de Estudos Musicais
+    -- Banco de dados + segurança (Supabase/PostgreSQL)
+    -- Execute este arquivo no SQL Editor do Supabase.
+    
+    create extension if not exists pgcrypto;
+    
+    -- =========================
+    -- ENUMS
+    -- =========================
+    do $$ begin
+      create type public.user_role as enum ('admin', 'instrutor');
+    exception when duplicate_object then null;
+    end $$;
+    
+    do $$ begin
+      create type public.student_status as enum ('ativo', 'inativo');
+    exception when duplicate_object then null;
+    end $$;
+    
+    -- =========================
+    -- TABELAS
+    -- =========================
+    create table if not exists public.profiles (
+      id uuid primary key references auth.users(id) on delete cascade,
+      full_name text,
+      role public.user_role not null default 'instrutor',
+      created_at timestamptz not null default now(),
+      updated_at timestamptz not null default now()
+    );
+    
+    create table if not exists public.students (
+      id uuid primary key default gen_random_uuid(),
+      owner_id uuid not null references auth.users(id) on delete cascade,
+      full_name text not null,
+      instrument text not null default '',
+      category text not null default '',
+      level text not null default '',
+      start_date date not null default current_date,
+      status public.student_status not null default 'ativo',
+      observations text,
+preview_fim
+
+ARQUIVO: ./supabase/seed.sql
+categoria: supabase
+tamanho_bytes: 0
+preview_inicio
+preview_fim
+
+ARQUIVO: ./supabase/gem_v3_multi_items.sql
+categoria: supabase
+tamanho_bytes: 563
+preview_inicio
+    alter table public.lesson_records
+      add column if not exists content_items jsonb not null default '[]'::jsonb,
+      add column if not exists page_items text[] not null default '{}',
+      add column if not exists lesson_items text[] not null default '{}';
+    
+    create index if not exists idx_lessons_content_items on public.lesson_records using gin (content_items);
+    create index if not exists idx_lessons_page_items on public.lesson_records using gin (page_items);
+    create index if not exists idx_lessons_lesson_items on public.lesson_records using gin (lesson_items);
+preview_fim
+
+ARQUIVO: ./supabase/gem_collab_org.sql
+categoria: supabase
+tamanho_bytes: 10103
+preview_inicio
+    -- Para que serve: habilitar uso coletivo (tudo compartilhado) via Organização (ORG) + RLS.
+    -- Onde colar: Supabase > SQL Editor > Run (execute uma vez).
+    -- Resultado: alunos, métodos, professores e lançamentos ficam visíveis para todos membros da mesma organização.
+    
+    create extension if not exists pgcrypto;
+    
+    -- 1) Organização
+    create table if not exists public.organizations (
+      id uuid primary key default gen_random_uuid(),
+      name text not null,
+      join_code text not null unique,
+      created_at timestamptz not null default now(),
+      updated_at timestamptz not null default now()
+    );
+    
+    -- 2) Membros
+    create table if not exists public.organization_members (
+      org_id uuid not null references public.organizations(id) on delete cascade,
+      user_id uuid not null references auth.users(id) on delete cascade,
+      member_role text not null default 'member',
+      created_at timestamptz not null default now(),
+      primary key (org_id, user_id)
+    );
+    
+    create index if not exists idx_org_members_user on public.organization_members(user_id);
+    create index if not exists idx_org_members_org on public.organization_members(org_id);
+    
+    -- 3) Profiles: org_id
+    alter table public.profiles
+      add column if not exists org_id uuid references public.organizations(id) on delete set null;
+    
+    -- 4) Adicionar org_id nas tabelas principais
+    alter table if exists public.students add column if not exists org_id uuid references public.organizations(id) on delete cascade;
+    alter table if exists public.teachers add column if not exists org_id uuid references public.organizations(id) on delete cascade;
+    alter table if exists public.methods add column if not exists org_id uuid references public.organizations(id) on delete cascade;
+    alter table if exists public.lesson_records add column if not exists org_id uuid references public.organizations(id) on delete cascade;
+    
+    create index if not exists idx_students_org on public.students(org_id);
+    create index if not exists idx_teachers_org on public.teachers(org_id);
+    create index if not exists idx_methods_org on public.methods(org_id);
+preview_fim
+
+ARQUIVO: ./supabase/gem_v2_upgrade.sql
+categoria: supabase
+tamanho_bytes: 6413
+preview_inicio
+    -- GEM V2 - expansão de alunos, professores, métodos e lançamentos
+    
+    -- =========================================
+    -- STUDENTS: novos campos
+    -- category = família (Cordas / Metais / Madeiras)
+    -- level = graduação (Aluno / Toca nos Ensaios / etc.)
+    -- =========================================
+    alter table public.students
+      add column if not exists congregation text,
+      add column if not exists address text,
+      add column if not exists phone text,
+      add column if not exists birth_date date,
+      add column if not exists baptism_date date,
+      add column if not exists instrument_change_note text;
+    
+    -- =========================================
+    -- PROFESSORES / ENCARREGADOS
+    -- =========================================
+    create table if not exists public.teachers (
+      id uuid primary key default gen_random_uuid(),
+      owner_id uuid not null references auth.users(id) on delete cascade,
+      full_name text not null,
+      instrument text not null default '',
+      congregation text,
+      role_kind text not null default 'instrutor',
+      active boolean not null default true,
+      created_at timestamptz not null default now(),
+      updated_at timestamptz not null default now()
+    );
+    
+    create index if not exists idx_teachers_owner on public.teachers(owner_id);
+    create index if not exists idx_teachers_name on public.teachers(full_name);
+    
+    drop trigger if exists trg_teachers_updated_at on public.teachers;
+    create trigger trg_teachers_updated_at
+    before update on public.teachers
+    for each row execute function public.set_updated_at();
+    
+    create or replace function public.set_teacher_owner()
+    returns trigger
+preview_fim
+
+ANDROID
+-------
+
+ARQUIVO: ./android/app/src/main/res/values/strings.xml
+categoria: android
+tamanho_bytes: 67
+preview_inicio
+    <resources>
+      <string name="app_name">Maestro</string>
+    </resources>
+preview_fim
+
+ARQUIVO: ./android/app/src/main/res/values/styles.xml
+categoria: android
+tamanho_bytes: 587
+preview_inicio
+    <resources xmlns:tools="http://schemas.android.com/tools">
+      <style name="AppTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="android:enforceNavigationBarContrast" tools:targetApi="29">true</item>
+        <item name="android:editTextBackground">@drawable/rn_edit_text_material</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="android:statusBarColor">#ffffff</item>
+      </style>
+      <style name="Theme.App.SplashScreen" parent="AppTheme">
+        <item name="android:windowBackground">@drawable/ic_launcher_background</item>
+      </style>
+    </resources>
+preview_fim
+
+ARQUIVO: ./android/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml
+categoria: android
+tamanho_bytes: 257
+preview_inicio
+    <?xml version="1.0" encoding="utf-8"?>
+    <adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
+        <background android:drawable="@color/iconBackground"/>
+        <foreground android:drawable="@mipmap/ic_launcher_foreground"/>
+    </adaptive-icon>
+preview_fim
+
+ARQUIVO: ./android/app/src/main/res/values/colors.xml
+categoria: android
+tamanho_bytes: 221
+preview_inicio
+    <resources>
+      <color name="splashscreen_background">#FFFFFF</color>
+      <color name="iconBackground">#0b1220</color>
+      <color name="colorPrimary">#023c69</color>
+      <color name="colorPrimaryDark">#ffffff</color>
+    </resources>
+preview_fim
+
+ARQUIVO: ./android/app/src/main/res/values-night/colors.xml
+categoria: android
+tamanho_bytes: 12
+preview_inicio
+    <resources/>
+preview_fim
+
+ARQUIVO: ./android/gradle/wrapper/gradle-wrapper.properties
+categoria: android
+tamanho_bytes: 253
+preview_inicio
+    distributionBase=GRADLE_USER_HOME
+    distributionPath=wrapper/dists
+    distributionUrl=https\://services.gradle.org/distributions/gradle-8.14.3-bin.zip
+    networkTimeout=10000
+    validateDistributionUrl=true
+    zipStoreBase=GRADLE_USER_HOME
+    zipStorePath=wrapper/dists
+preview_fim
+
+ARQUIVO: ./android/settings.gradle
+categoria: android
+tamanho_bytes: 1260
+preview_inicio
+    pluginManagement {
+      def reactNativeGradlePlugin = new File(
+        providers.exec {
+          workingDir(rootDir)
+          commandLine("node", "--print", "require.resolve('@react-native/gradle-plugin/package.json', { paths: [require.resolve('react-native/package.json')] })")
+        }.standardOutput.asText.get().trim()
+      ).getParentFile().absolutePath
+      includeBuild(reactNativeGradlePlugin)
+      
+      def expoPluginsPath = new File(
+        providers.exec {
+          workingDir(rootDir)
+          commandLine("node", "--print", "require.resolve('expo-modules-autolinking/package.json', { paths: [require.resolve('expo/package.json')] })")
+        }.standardOutput.asText.get().trim(),
+        "../android/expo-gradle-plugin"
+      ).absolutePath
+      includeBuild(expoPluginsPath)
+    }
+    
+    plugins {
+      id("com.facebook.react.settings")
+      id("expo-autolinking-settings")
+    }
+    
+    extensions.configure(com.facebook.react.ReactSettingsExtension) { ex ->
+      if (System.getenv('EXPO_USE_COMMUNITY_AUTOLINKING') == '1') {
+        ex.autolinkLibrariesFromCommand()
+      } else {
+        ex.autolinkLibrariesFromCommand(expoAutolinking.rnConfigCommand)
+      }
+    }
+    expoAutolinking.useExpoModules()
+    
+    rootProject.name = 'Maestro'
+    
+    expoAutolinking.useExpoVersionCatalog()
+    
+    include ':app'
+    includeBuild(expoAutolinking.reactNativeGradlePlugin)
+preview_fim
+
+ARQUIVO: ./android/build.gradle
+categoria: android
+tamanho_bytes: 556
+preview_inicio
+    // Top-level build file where you can add configuration options common to all sub-projects/modules.
+    
+    buildscript {
+      repositories {
+        google()
+        mavenCentral()
+      }
+      dependencies {
+        classpath('com.android.tools.build:gradle')
+        classpath('com.facebook.react:react-native-gradle-plugin')
+        classpath('org.jetbrains.kotlin:kotlin-gradle-plugin')
+      }
+    }
+    
+    allprojects {
+      repositories {
+        google()
+        mavenCentral()
+        maven { url 'https://www.jitpack.io' }
+      }
+    }
+    
+    apply plugin: "expo-root-project"
+    apply plugin: "com.facebook.react.rootproject"
+preview_fim
+
+ARQUIVO: ./android/gradle.properties
+categoria: android
+tamanho_bytes: 2836
+preview_inicio
+    # Project-wide Gradle settings.
+    
+    # IDE (e.g. Android Studio) users:
+    # Gradle settings configured through the IDE *will override*
+    # any settings specified in this file.
+    
+    # For more details on how to configure your build environment visit
+    # http://www.gradle.org/docs/current/userguide/build_environment.html
+    
+    # Specifies the JVM arguments used for the daemon process.
+    # The setting is particularly useful for tweaking memory settings.
+    # Default value: -Xmx512m -XX:MaxMetaspaceSize=256m
+    org.gradle.jvmargs=-Xmx2048m -XX:MaxMetaspaceSize=512m
+    
+    # When configured, Gradle will run in incubating parallel mode.
+    # This option should only be used with decoupled projects. More details, visit
+    # http://www.gradle.org/docs/current/userguide/multi_project_builds.html#sec:decoupled_projects
+    org.gradle.parallel=true
+    
+    # AndroidX package structure to make it clearer which packages are bundled with the
+    # Android operating system, and which are packaged with your app's APK
+    # https://developer.android.com/topic/libraries/support-library/androidx-rn
+    android.useAndroidX=true
+    
+    # Enable AAPT2 PNG crunching
+    android.enablePngCrunchInReleaseBuilds=true
+    
+    # Use this property to specify which architecture you want to build.
+    # You can also override it from the CLI using
+    # ./gradlew <task> -PreactNativeArchitectures=x86_64
+    reactNativeArchitectures=armeabi-v7a,arm64-v8a,x86,x86_64
+    
+    # Use this property to enable support to the new architecture.
+    # This will allow you to use TurboModules and the Fabric render in
+    # your application. You should enable this flag either if you want
+    # to write custom TurboModules/Fabric components OR use libraries that
+    # are providing them.
+    newArchEnabled=true
+    
+    # Use this property to enable or disable the Hermes JS engine.
+preview_fim
+
+ARQUIVO: ./android/app/src/debugOptimized/AndroidManifest.xml
+categoria: android
+tamanho_bytes: 374
+preview_inicio
+    <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools">
+    
+        <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    
+        <application android:usesCleartextTraffic="true" tools:targetApi="28" tools:ignore="GoogleAppIndexingWarning" tools:replace="android:usesCleartextTraffic" />
+    </manifest>
+preview_fim
+
+ARQUIVO: ./android/app/src/main/AndroidManifest.xml
+categoria: android
+tamanho_bytes: 1754
+preview_inicio
+    <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+      <uses-permission android:name="android.permission.INTERNET"/>
+      <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+      <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+      <uses-permission android:name="android.permission.VIBRATE"/>
+      <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+      <queries>
+        <intent>
+          <action android:name="android.intent.action.VIEW"/>
+          <category android:name="android.intent.category.BROWSABLE"/>
+          <data android:scheme="https"/>
+        </intent>
+      </queries>
+      <application android:name=".MainApplication" android:label="@string/app_name" android:icon="@mipmap/ic_launcher" android:roundIcon="@mipmap/ic_launcher_round" android:allowBackup="true" android:theme="@style/AppTheme" android:supportsRtl="true" android:enableOnBackInvokedCallback="false">
+        <meta-data android:name="expo.modules.updates.ENABLED" android:value="false"/>
+        <meta-data android:name="expo.modules.updates.EXPO_UPDATES_CHECK_ON_LAUNCH" android:value="ALWAYS"/>
+        <meta-data android:name="expo.modules.updates.EXPO_UPDATES_LAUNCH_WAIT_MS" android:value="0"/>
+        <activity android:name=".MainActivity" android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout|uiMode" android:launchMode="singleTask" android:windowSoftInputMode="adjustResize" android:theme="@style/Theme.App.SplashScreen" android:exported="true" android:screenOrientation="portrait">
+          <intent-filter>
+            <action android:name="android.intent.action.MAIN"/>
+            <category android:name="android.intent.category.LAUNCHER"/>
+          </intent-filter>
+        </activity>
+      </application>
+    </manifest>
+preview_fim
+
+ARQUIVO: ./android/app/build.gradle
+categoria: android
+tamanho_bytes: 8135
+preview_inicio
+    apply plugin: "com.android.application"
+    apply plugin: "org.jetbrains.kotlin.android"
+    apply plugin: "com.facebook.react"
+    
+    def projectRoot = rootDir.getAbsoluteFile().getParentFile().getAbsolutePath()
+    
+    /**
+     * This is the configuration block to customize your React Native Android app.
+     * By default you don't need to apply any configuration, just uncomment the lines you need.
+     */
+    react {
+        entryFile = file(["node", "-e", "require('expo/scripts/resolveAppEntry')", projectRoot, "android", "absolute"].execute(null, rootDir).text.trim())
+        reactNativeDir = new File(["node", "--print", "require.resolve('react-native/package.json')"].execute(null, rootDir).text.trim()).getParentFile().getAbsoluteFile()
+        hermesCommand = new File(["node", "--print", "require.resolve('react-native/package.json')"].execute(null, rootDir).text.trim()).getParentFile().getAbsolutePath() + "/sdks/hermesc/%OS-BIN%/hermesc"
+        codegenDir = new File(["node", "--print", "require.resolve('@react-native/codegen/package.json', { paths: [require.resolve('react-native/package.json')] })"].execute(null, rootDir).text.trim()).getParentFile().getAbsoluteFile()
+    
+        enableBundleCompression = (findProperty('android.enableBundleCompression') ?: false).toBoolean()
+        // Use Expo CLI to bundle the app, this ensures the Metro config
+        // works correctly with Expo projects.
+        cliFile = new File(["node", "--print", "require.resolve('@expo/cli', { paths: [require.resolve('expo/package.json')] })"].execute(null, rootDir).text.trim())
+        bundleCommand = "export:embed"
+    
+        /* Folders */
+         //   The root of your project, i.e. where "package.json" lives. Default is '../..'
+        // root = file("../../")
+        //   The folder where the react-native NPM package is. Default is ../../node_modules/react-native
+        // reactNativeDir = file("../../node_modules/react-native")
+        //   The folder where the react-native Codegen package is. Default is ../../node_modules/@react-native/codegen
+        // codegenDir = file("../../node_modules/@react-native/codegen")
+    
+        /* Variants */
+        //   The list of variants to that are debuggable. For those we're going to
+        //   skip the bundling of the JS bundle and the assets. By default is just 'debug'.
+        //   If you add flavors like lite, prod, etc. you'll have to list your debuggableVariants.
+        // debuggableVariants = ["liteDebug", "prodDebug"]
+    
+        /* Bundling */
+        //   A list containing the node command and its flags. Default is just 'node'.
+        // nodeExecutableAndArgs = ["node"]
+    
+preview_fim
+
+ARQUIVO: ./android/app/src/debug/AndroidManifest.xml
+categoria: android
+tamanho_bytes: 374
+preview_inicio
+    <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools">
+    
+        <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    
+        <application android:usesCleartextTraffic="true" tools:targetApi="28" tools:ignore="GoogleAppIndexingWarning" tools:replace="android:usesCleartextTraffic" />
+    </manifest>
+preview_fim
+
+ARQUIVO: ./android/app/src/main/java/com/maestro/gem/MainActivity.kt
+categoria: android
+tamanho_bytes: 2185
+preview_inicio
+    package com.maestro.gem
+    
+    import android.os.Build
+    import android.os.Bundle
+    
+    import com.facebook.react.ReactActivity
+    import com.facebook.react.ReactActivityDelegate
+    import com.facebook.react.defaults.DefaultNewArchitectureEntryPoint.fabricEnabled
+    import com.facebook.react.defaults.DefaultReactActivityDelegate
+    
+    import expo.modules.ReactActivityDelegateWrapper
+    
+    class MainActivity : ReactActivity() {
+      override fun onCreate(savedInstanceState: Bundle?) {
+        // Set the theme to AppTheme BEFORE onCreate to support
+        // coloring the background, status bar, and navigation bar.
+        // This is required for expo-splash-screen.
+        setTheme(R.style.AppTheme);
+        super.onCreate(null)
+      }
+    
+      /**
+       * Returns the name of the main component registered from JavaScript. This is used to schedule
+       * rendering of the component.
+       */
+      override fun getMainComponentName(): String = "main"
+    
+      /**
+       * Returns the instance of the [ReactActivityDelegate]. We use [DefaultReactActivityDelegate]
+       * which allows you to enable New Architecture with a single boolean flags [fabricEnabled]
+       */
+      override fun createReactActivityDelegate(): ReactActivityDelegate {
+        return ReactActivityDelegateWrapper(
+              this,
+              BuildConfig.IS_NEW_ARCHITECTURE_ENABLED,
+              object : DefaultReactActivityDelegate(
+                  this,
+                  mainComponentName,
+                  fabricEnabled
+              ){})
+preview_fim
+
+ARQUIVO: ./android/app/src/main/res/drawable/rn_edit_text_material.xml
+categoria: android
+tamanho_bytes: 1917
+preview_inicio
+    <?xml version="1.0" encoding="utf-8"?>
+    <!-- Copyright (C) 2014 The Android Open Source Project
+    
+         Licensed under the Apache License, Version 2.0 (the "License");
+         you may not use this file except in compliance with the License.
+         You may obtain a copy of the License at
+    
+              http://www.apache.org/licenses/LICENSE-2.0
+    
+         Unless required by applicable law or agreed to in writing, software
+         distributed under the License is distributed on an "AS IS" BASIS,
+         WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+         See the License for the specific language governing permissions and
+         limitations under the License.
+    -->
+    <inset xmlns:android="http://schemas.android.com/apk/res/android"
+           android:insetLeft="@dimen/abc_edit_text_inset_horizontal_material"
+           android:insetRight="@dimen/abc_edit_text_inset_horizontal_material"
+           android:insetTop="@dimen/abc_edit_text_inset_top_material"
+           android:insetBottom="@dimen/abc_edit_text_inset_bottom_material"
+           >
+    
+        <selector>
+            <!--
+              This file is a copy of abc_edit_text_material (https://bit.ly/3k8fX7I).
+              The item below with state_pressed="false" and state_focused="false" causes a NullPointerException.
+              NullPointerException:tempt to invoke virtual method 'android.graphics.drawable.Drawable android.graphics.drawable.Drawable$ConstantState.newDrawable(android.content.res.Resources)'
+    
+              <item android:state_pressed="false" android:state_focused="false" android:drawable="@drawable/abc_textfield_default_mtrl_alpha"/>
+    
+              For more info, see https://bit.ly/3CdLStv (react-native/pull/29452) and https://bit.ly/3nxOMoR.
+            -->
+            <item android:state_enabled="false" android:drawable="@drawable/abc_textfield_default_mtrl_alpha"/>
+            <item android:drawable="@drawable/abc_textfield_activated_mtrl_alpha"/>
+        </selector>
+    
+    </inset>
+preview_fim
+
+ARQUIVO: ./android/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml
+categoria: android
+tamanho_bytes: 257
+preview_inicio
+    <?xml version="1.0" encoding="utf-8"?>
+    <adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
+        <background android:drawable="@color/iconBackground"/>
+        <foreground android:drawable="@mipmap/ic_launcher_foreground"/>
+    </adaptive-icon>
+preview_fim
+
+ARQUIVO: ./android/app/src/main/java/com/maestro/gem/MainApplication.kt
+categoria: android
+tamanho_bytes: 2028
+preview_inicio
+    package com.maestro.gem
+    
+    import android.app.Application
+    import android.content.res.Configuration
+    
+    import com.facebook.react.PackageList
+    import com.facebook.react.ReactApplication
+    import com.facebook.react.ReactNativeApplicationEntryPoint.loadReactNative
+    import com.facebook.react.ReactNativeHost
+    import com.facebook.react.ReactPackage
+    import com.facebook.react.ReactHost
+    import com.facebook.react.common.ReleaseLevel
+    import com.facebook.react.defaults.DefaultNewArchitectureEntryPoint
+    import com.facebook.react.defaults.DefaultReactNativeHost
+    
+    import expo.modules.ApplicationLifecycleDispatcher
+    import expo.modules.ReactNativeHostWrapper
+    
+    class MainApplication : Application(), ReactApplication {
+    
+      override val reactNativeHost: ReactNativeHost = ReactNativeHostWrapper(
+          this,
+          object : DefaultReactNativeHost(this) {
+            override fun getPackages(): List<ReactPackage> =
+                PackageList(this).packages.apply {
+                  // Packages that cannot be autolinked yet can be added manually here, for example:
+                  // add(MyReactNativePackage())
+                }
+    
+              override fun getJSMainModuleName(): String = ".expo/.virtual-metro-entry"
+    
+              override fun getUseDeveloperSupport(): Boolean = BuildConfig.DEBUG
+    
+              override val isNewArchEnabled: Boolean = BuildConfig.IS_NEW_ARCHITECTURE_ENABLED
+          }
+      )
+    
+      override val reactHost: ReactHost
+        get() = ReactNativeHostWrapper.createReactHost(applicationContext, reactNativeHost)
+    
+preview_fim
+
+ARQUIVO: ./android/app/src/main/res/drawable/ic_launcher_background.xml
+categoria: android
+tamanho_bytes: 245
+preview_inicio
+    <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+      <item android:drawable="@color/splashscreen_background"/>
+      <item>
+        <bitmap android:gravity="center" android:src="@drawable/splashscreen_logo"/>
+      </item>
+    </layer-list>
+preview_fim
+
+OTHER
+-----
+
+ARQUIVO: ./babel.config.js
+categoria: other
+tamanho_bytes: 111
+preview_inicio
+    module.exports = function(api) {
+      api.cache(true);
+      return {
+        presets: ['babel-preset-expo'],
+      };
+    };
+preview_fim
+
+ARQUIVO: ./.env.example
+categoria: other
+tamanho_bytes: 176
+preview_inicio
+    # Para que serve: configurar auto-entrada na organização.
+    # Onde colar: crie um .env na raiz do projeto e/ou configure como EAS Secret.
+    EXPO_PUBLIC_ORG_JOIN_CODE=GEMVGS-2026
+preview_fim
+
+ARQUIVO: ./.env
+categoria: other
+tamanho_bytes: 307
+preview_inicio
+    EXPO_PUBLIC_SUPABASE_URL=<redacted>
+    EXPO_PUBLIC_SUPABASE_ANON_KEY=<redacted>
+preview_fim
+
+MAPA COMPACTO DE ARQUIVOS
+-------------------------
+- [screen] ./src/screens/LogsScreen.js
+- [screen] ./src/screens/LoginScreen.js
+- [screen] ./src/screens/LessonLaunchesScreen.js
+- [screen] ./src/screens/MethodsScreen.js
+- [screen] ./src/screens/StudentDetailScreen.js
+- [screen] ./src/screens/SettingsScreen.js
+- [screen] ./src/screens/ReportsScreen.js
+- [data] ./src/data/catalogs.js
+- [context] ./src/context/AuthContext.js
+- [component] ./src/components/SelectModal.js
+- [lib] ./src/lib/supabase.js
+- [screen] ./src/screens/LessonFormScreen.js
+- [screen] ./src/screens/DashboardScreen.js
+- [navigation] ./src/navigation/AppNavigator.js
+- [supabase] ./supabase/gem_collab_org.sql
+- [utility] ./src/utils/logger.js
+- [utility] ./src/utils/exporters.js
+- [supabase] ./supabase/gem_v2_upgrade.sql
+- [supabase] ./supabase/seed.sql
+- [supabase] ./supabase/schema.sql
+- [supabase] ./supabase/gem_v3_multi_items.sql
+- [service] ./src/services/db.js
+- [screen] ./src/screens/TeachersScreen.js
+- [screen] ./src/screens/StudentsScreen.js
+- [service] ./src/services/org.js
+- [utility] ./src/utils/errorHandler.js
+- [utility] ./src/utils/analytics.js
+- [theme] ./src/theme/ThemeProvider.js
+- [component] ./src/components/RadarChart.js
+- [android] ./android/app/src/main/res/drawable/rn_edit_text_material.xml
+- [android] ./android/app/src/main/res/drawable/ic_launcher_background.xml
+- [android] ./android/app/src/main/java/com/maestro/gem/MainApplication.kt
+- [android] ./android/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml
+- [android] ./android/app/src/main/res/values/strings.xml
+- [android] ./android/app/src/main/res/values/colors.xml
+- [android] ./android/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml
+- [android] ./android/app/build.gradle
+- [other] ./.env.example
+- [other] ./.env
+- [android] ./android/app/src/debug/AndroidManifest.xml
+- [android] ./android/app/src/main/java/com/maestro/gem/MainActivity.kt
+- [android] ./android/app/src/main/AndroidManifest.xml
+- [android] ./android/app/src/debugOptimized/AndroidManifest.xml
+- [build-config] ./eas.json
+- [other] ./babel.config.js
+- [expo-config] ./app.json
+- [package-config] ./package.json
+- [component] ./src/components/KpiCard.js
+- [component] ./src/components/ErrorBoundary.js
+- [component] ./src/components/DrawerMenuButton.js
+- [android] ./android/build.gradle
+- [android] ./android/app/src/main/res/values-night/colors.xml
+- [android] ./android/app/src/main/res/values/styles.xml
+- [android] ./android/gradle.properties
+- [entrypoint] ./App.js
+- [android] ./android/settings.gradle
+- [android] ./android/gradle/wrapper/gradle-wrapper.properties
+
+OBSERVACOES
+-----------
+- Secrets encontrados no preview foram mascarados.
+- Arquivos genericos e binarios foram excluidos.
+- Se o TXT ficar grande demais, rode de novo com -MaxPreviewLines 20.
+
+

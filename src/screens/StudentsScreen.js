@@ -1,28 +1,13 @@
-import React, { useCallback, useState, useMemo } from 'react';
-import {
-  Alert,
-  FlatList,
-  Modal,
-  RefreshControl,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View
-} from 'react-native';
+import React, { useCallback, useMemo, useState } from 'react';
+import { Alert, FlatList, Modal, RefreshControl, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { useFocusEffect } from '@react-navigation/native';
 import dayjs from 'dayjs';
 
 import { deleteStudent, listStudents, saveStudent } from '../services/db';
 import SelectModal from '../components/SelectModal';
-import {
-  CONGREGATIONS,
-  GRADUATIONS,
-  INSTRUMENTS,
-  getFamilyByInstrument
-} from '../data/catalogs';
+import { CONGREGATIONS, GRADUATIONS, INSTRUMENTS, INSTRUMENT_FAMILIES, getFamilyByInstrument } from '../data/catalogs';
 import { useTheme } from '../theme/ThemeProvider';
+import { ActionRow, AppField, EmptyState, PageHeader, PrimaryButton, QuietButton, SecondaryButton, SectionCard } from '../components/AppUI';
 
 const emptyForm = {
   id: null,
@@ -41,13 +26,27 @@ const emptyForm = {
   instrument_change_note: ''
 };
 
-const initialFilters = {
-  search: '',
-  instrument: '',
-  category: '',
-  level: '',
-  status: ''
-};
+const initialFilters = { search: '', instrument: '', category: '', level: '', status: '' };
+
+const StudentRow = React.memo(function StudentRow({ item, onOpen, onEdit, onDelete, theme }) {
+  const styles = makeStyles(theme);
+  return (
+    <TouchableOpacity style={styles.card} onPress={() => onOpen(item.id)}>
+      <View style={styles.cardHeader}>
+        <View style={{ flex: 1 }}>
+          <Text style={styles.name}>{item.full_name}</Text>
+          <Text style={styles.meta}>{item.instrument || '-'} • {item.category || '-'} • {item.level || '-'}</Text>
+          <Text style={styles.meta}>{item.congregation || '-'} • {item.status || '-'}</Text>
+        </View>
+        <QuietButton title="Editar" size="sm" onPress={() => onEdit(item)} />
+      </View>
+      <ActionRow style={{ marginTop: 10 }}>
+        <View style={{ flex: 1 }}><SecondaryButton title="Abrir" onPress={() => onOpen(item.id)} size="sm" /></View>
+        <View style={{ flex: 1 }}><SecondaryButton title="Excluir" onPress={() => onDelete(item)} size="sm" /></View>
+      </ActionRow>
+    </TouchableOpacity>
+  );
+});
 
 export default function StudentsScreen({ navigation }) {
   const { theme } = useTheme();
@@ -56,24 +55,22 @@ export default function StudentsScreen({ navigation }) {
   const [filters, setFilters] = useState(initialFilters);
   const [students, setStudents] = useState([]);
   const [loading, setLoading] = useState(false);
-
   const [modalVisible, setModalVisible] = useState(false);
   const [form, setForm] = useState(emptyForm);
   const [saving, setSaving] = useState(false);
-
   const [customCongregation, setCustomCongregation] = useState('');
 
   const instrumentOptions = useMemo(() => INSTRUMENTS.map((i) => ({ label: i.label, value: i.label })), []);
-  const familyOptions = useMemo(() => ['Cordas', 'Metais', 'Madeiras'].map((v) => ({ label: v, value: v })), []);
+  const familyOptions = useMemo(() => INSTRUMENT_FAMILIES.map((v) => ({ label: v, value: v })), []);
   const graduationOptions = useMemo(() => GRADUATIONS.map((v) => ({ label: v, value: v })), []);
   const statusOptions = useMemo(() => ['ativo', 'inativo'].map((v) => ({ label: v, value: v })), []);
-  const congregationOptions = useMemo(() => CONGREGATIONS.map((v) => ({ label: v, value: v })), []);
+  const congregationOptions = useMemo(() => [...CONGREGATIONS, 'Outra'].map((v) => ({ label: v, value: v })), []);
 
   const load = useCallback(async () => {
     try {
       setLoading(true);
       const data = await listStudents(filters);
-      setStudents(data);
+      setStudents(data || []);
     } catch (e) {
       Alert.alert('Erro', e.message || 'Falha ao carregar alunos.');
     } finally {
@@ -91,11 +88,7 @@ export default function StudentsScreen({ navigation }) {
 
   const openEdit = (student) => {
     const isCustom = student.congregation && !CONGREGATIONS.includes(student.congregation);
-    setForm({
-      ...emptyForm,
-      ...student,
-      congregation: isCustom ? 'Outra' : (student.congregation || '')
-    });
+    setForm({ ...emptyForm, ...student, congregation: isCustom ? 'Outra' : (student.congregation || '') });
     setCustomCongregation(isCustom ? student.congregation : '');
     setModalVisible(true);
   };
@@ -118,16 +111,8 @@ export default function StudentsScreen({ navigation }) {
 
     try {
       setSaving(true);
-
-      const finalCongregation =
-        form.congregation === 'Outra' ? customCongregation.trim() : form.congregation;
-
-      await saveStudent({
-        ...form,
-        full_name: form.full_name.trim(),
-        congregation: finalCongregation || null
-      });
-
+      const finalCongregation = form.congregation === 'Outra' ? customCongregation.trim() : form.congregation;
+      await saveStudent({ ...form, full_name: form.full_name.trim(), congregation: finalCongregation || null });
       closeModal();
       await load();
     } catch (e) {
@@ -140,28 +125,16 @@ export default function StudentsScreen({ navigation }) {
   const onDelete = (student) => {
     Alert.alert('Excluir aluno', `Deseja excluir "${student.full_name}"?`, [
       { text: 'Cancelar', style: 'cancel' },
-      {
-        text: 'Excluir',
-        style: 'destructive',
-        onPress: async () => {
-          try {
-            await deleteStudent(student.id);
-            await load();
-          } catch (e) {
-            Alert.alert('Erro', e.message || 'Falha ao excluir.');
-          }
-        }
-      }
+      { text: 'Excluir', style: 'destructive', onPress: async () => { try { await deleteStudent(student.id); await load(); } catch (e) { Alert.alert('Erro', e.message || 'Falha ao excluir.'); } } },
     ]);
   };
 
   const clearFilters = async () => {
-    const reset = { ...initialFilters };
-    setFilters(reset);
+    setFilters(initialFilters);
     try {
       setLoading(true);
-      const data = await listStudents(reset);
-      setStudents(data);
+      const data = await listStudents(initialFilters);
+      setStudents(data || []);
     } catch (e) {
       Alert.alert('Erro', e.message || 'Falha ao limpar filtros.');
     } finally {
@@ -172,157 +145,58 @@ export default function StudentsScreen({ navigation }) {
   return (
     <View style={styles.wrap}>
       <FlatList
-        style={styles.listBg}  // <- garante fundo no modo escuro
         data={students}
         keyExtractor={(item) => item.id}
-        refreshControl={
-          <RefreshControl
-            refreshing={loading}
-            onRefresh={load}
-            colors={[theme.colors.accent]} // Android
-            progressBackgroundColor={theme.colors.card} // Android
-            tintColor={theme.colors.accent} // iOS
-          />
-        }
-        contentContainerStyle={styles.contentBg} // <- garante fundo do conteúdo
+        initialNumToRender={8}
+        windowSize={7}
+        maxToRenderPerBatch={8}
+        removeClippedSubviews
+        refreshControl={<RefreshControl refreshing={loading} onRefresh={load} tintColor={theme.colors.accent} />}
+        contentContainerStyle={{ padding: 16, paddingBottom: 24 }}
         ListHeaderComponent={
-          <View style={styles.headerBg}>
-            <Text style={styles.title}>Alunos</Text>
-            <Text style={styles.subtitle}>Cadastro completo + filtros</Text>
+          <View>
+            <PageHeader title="Alunos" subtitle="Consulta rápida, filtros úteis e cadastro sem excesso de ruído." right={<PrimaryButton title="Novo aluno" size="sm" onPress={openNew} />} />
 
-            <TextInput
-              placeholder="Buscar por nome"
-              placeholderTextColor={theme.colors.placeholder}
-              style={styles.input}
-              value={filters.search}
-              onChangeText={(v) => setFilters((f) => ({ ...f, search: v }))}
-            />
-
-            <SelectModal
-              label="Instrumento (filtro)"
-              value={filters.instrument}
-              options={[{ label: 'Todos', value: '' }, ...instrumentOptions]}
-              onChange={(v) => setFilters((f) => ({ ...f, instrument: v }))}
-            />
-
-            <SelectModal
-              label="Família (filtro)"
-              value={filters.category}
-              options={[{ label: 'Todas', value: '' }, ...familyOptions]}
-              onChange={(v) => setFilters((f) => ({ ...f, category: v }))}
-            />
-
-            <SelectModal
-              label="Graduação (filtro)"
-              value={filters.level}
-              options={[{ label: 'Todas', value: '' }, ...graduationOptions]}
-              onChange={(v) => setFilters((f) => ({ ...f, level: v }))}
-            />
-
-            <SelectModal
-              label="Status (filtro)"
-              value={filters.status}
-              options={[{ label: 'Todos', value: '' }, ...statusOptions]}
-              onChange={(v) => setFilters((f) => ({ ...f, status: v }))}
-            />
-
-            <View style={styles.rowWrap}>
-              <TouchableOpacity style={styles.primaryBtn} onPress={load}>
-                <Text style={styles.primaryText}>Aplicar filtros</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.secondaryBtn} onPress={clearFilters}>
-                <Text style={styles.secondaryText}>Limpar</Text>
-              </TouchableOpacity>
-            </View>
-
-            <TouchableOpacity style={styles.addBtn} onPress={openNew}>
-              <Text style={styles.addBtnText}>+ Novo aluno</Text>
-            </TouchableOpacity>
+            <SectionCard title="Filtros" subtitle={`${students.length} resultado(s) no recorte atual.`} compact>
+              <AppField label="Buscar por nome" value={filters.search} onChangeText={(v) => setFilters((f) => ({ ...f, search: v }))} placeholder="Ex.: João" />
+              <SelectModal label="Instrumento" value={filters.instrument} options={[{ label: 'Todos', value: '' }, ...instrumentOptions]} onChange={(v) => setFilters((f) => ({ ...f, instrument: v }))} />
+              <ActionRow>
+                <View style={{ flex: 1 }}><SelectModal label="Família" value={filters.category} options={[{ label: 'Todas', value: '' }, ...familyOptions]} onChange={(v) => setFilters((f) => ({ ...f, category: v }))} /></View>
+                <View style={{ flex: 1 }}><SelectModal label="Graduação" value={filters.level} options={[{ label: 'Todas', value: '' }, ...graduationOptions]} onChange={(v) => setFilters((f) => ({ ...f, level: v }))} /></View>
+              </ActionRow>
+              <SelectModal label="Status" value={filters.status} options={[{ label: 'Todos', value: '' }, ...statusOptions]} onChange={(v) => setFilters((f) => ({ ...f, status: v }))} />
+              <ActionRow>
+                <View style={{ flex: 1 }}><PrimaryButton title="Aplicar" onPress={load} size="sm" /></View>
+                <View style={{ flex: 1 }}><SecondaryButton title="Limpar" onPress={clearFilters} size="sm" /></View>
+              </ActionRow>
+            </SectionCard>
           </View>
         }
-        ListEmptyComponent={<Text style={styles.empty}>Nenhum aluno encontrado.</Text>}
-        renderItem={({ item }) => (
-          <TouchableOpacity
-            style={styles.card}
-            onPress={() => navigation.navigate('StudentDetail', { studentId: item.id })}
-          >
-            <Text style={styles.name}>{item.full_name}</Text>
-            <Text style={styles.meta}>
-              {item.category || '-'} • {item.instrument || '-'} • {item.level || '-'}
-            </Text>
-            <Text style={styles.meta}>
-              {item.congregation || '-'} • {item.status || '-'}
-            </Text>
-
-            <View style={styles.cardActions}>
-              <TouchableOpacity style={styles.smallBtn} onPress={() => openEdit(item)}>
-                <Text style={styles.smallBtnText}>Editar</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={[styles.smallBtn, styles.deleteBtn]} onPress={() => onDelete(item)}>
-                <Text style={styles.smallBtnText}>Excluir</Text>
-              </TouchableOpacity>
-            </View>
-          </TouchableOpacity>
-        )}
+        ListEmptyComponent={<EmptyState title="Nenhum aluno encontrado" subtitle="Ajuste os filtros ou cadastre um novo aluno." />}
+        renderItem={({ item }) => <StudentRow item={item} onOpen={(studentId) => navigation.navigate('StudentDetail', { studentId })} onEdit={openEdit} onDelete={onDelete} theme={theme} />}
       />
 
       <Modal visible={modalVisible} animationType="slide">
         <ScrollView style={styles.wrap} contentContainerStyle={{ padding: 16, paddingBottom: 30 }}>
-          <Text style={styles.title}>{form.id ? 'Editar Aluno' : 'Novo Aluno'}</Text>
-
-          <TextInput
-            style={styles.input}
-            placeholder="Nome completo"
-            placeholderTextColor={theme.colors.placeholder}
-            value={form.full_name}
-            onChangeText={(v) => setForm((f) => ({ ...f, full_name: v }))}
-          />
-
-          <View style={styles.readonlyBox}>
-            <Text style={styles.readonlyLabel}>Família do instrumento</Text>
-            <Text style={styles.readonlyText}>{form.category || 'Será preenchida automaticamente'}</Text>
-          </View>
-
+          <PageHeader title={form.id ? 'Editar aluno' : 'Novo aluno'} subtitle="Cadastro enxuto com família do instrumento preenchida automaticamente." />
+          <AppField label="Nome completo" value={form.full_name} onChangeText={(v) => setForm((f) => ({ ...f, full_name: v }))} placeholder="Nome completo" />
+          <SectionCard title="Família do instrumento" compact><Text style={styles.readonlyText}>{form.category || 'Será preenchida automaticamente'}</Text></SectionCard>
           <SelectModal label="Instrumento" value={form.instrument} options={instrumentOptions} onChange={onSelectInstrument} />
           <SelectModal label="Graduação" value={form.level} options={graduationOptions} onChange={(v) => setForm((f) => ({ ...f, level: v }))} />
-          <SelectModal label="Comum / Congregação" value={form.congregation} options={congregationOptions} onChange={(v) => setForm((f) => ({ ...f, congregation: v }))} />
-
-          {form.congregation === 'Outra' && (
-            <TextInput
-              style={styles.input}
-              placeholder="Digite a congregação"
-              placeholderTextColor={theme.colors.placeholder}
-              value={customCongregation}
-              onChangeText={setCustomCongregation}
-            />
-          )}
-
-          <TextInput style={styles.input} placeholder="Dia que começou as aulas (YYYY-MM-DD)" placeholderTextColor={theme.colors.placeholder} value={form.start_date} onChangeText={(v) => setForm((f) => ({ ...f, start_date: v }))} />
-          <TextInput style={styles.input} placeholder="Endereço" placeholderTextColor={theme.colors.placeholder} value={form.address} onChangeText={(v) => setForm((f) => ({ ...f, address: v }))} />
-          <TextInput style={styles.input} placeholder="Número de celular" placeholderTextColor={theme.colors.placeholder} value={form.phone} onChangeText={(v) => setForm((f) => ({ ...f, phone: v }))} />
-          <TextInput style={styles.input} placeholder="Data de nascimento (YYYY-MM-DD)" placeholderTextColor={theme.colors.placeholder} value={form.birth_date} onChangeText={(v) => setForm((f) => ({ ...f, birth_date: v }))} />
-          <TextInput style={styles.input} placeholder="Data de batismo (YYYY-MM-DD)" placeholderTextColor={theme.colors.placeholder} value={form.baptism_date} onChangeText={(v) => setForm((f) => ({ ...f, baptism_date: v }))} />
-          <TextInput style={styles.input} placeholder="Mudança de instrumento (ex.: Violino → Viola)" placeholderTextColor={theme.colors.placeholder} value={form.instrument_change_note} onChangeText={(v) => setForm((f) => ({ ...f, instrument_change_note: v }))} />
-
-          <SelectModal label="Ativo nas aulas" value={form.status} options={statusOptions} onChange={(v) => setForm((f) => ({ ...f, status: v }))} />
-
-          <TextInput
-            style={[styles.input, { minHeight: 110, textAlignVertical: 'top' }]}
-            multiline
-            placeholder="Observações"
-            placeholderTextColor={theme.colors.placeholder}
-            value={form.observations}
-            onChangeText={(v) => setForm((f) => ({ ...f, observations: v }))}
-          />
-
-          <View style={styles.rowWrap}>
-            <TouchableOpacity style={styles.secondaryBtn} onPress={closeModal}>
-              <Text style={styles.secondaryText}>Cancelar</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.primaryBtn} onPress={onSave} disabled={saving}>
-              <Text style={styles.primaryText}>{saving ? 'Salvando...' : 'Salvar'}</Text>
-            </TouchableOpacity>
-          </View>
+          <SelectModal label="Congregação" value={form.congregation} options={congregationOptions} onChange={(v) => setForm((f) => ({ ...f, congregation: v }))} />
+          {form.congregation === 'Outra' ? <AppField label="Congregação personalizada" value={customCongregation} onChangeText={setCustomCongregation} placeholder="Digite a congregação" /> : null}
+          <AppField label="Início das aulas" value={form.start_date} onChangeText={(v) => setForm((f) => ({ ...f, start_date: v }))} placeholder="YYYY-MM-DD" autoCapitalize="none" />
+          <AppField label="Endereço" value={form.address} onChangeText={(v) => setForm((f) => ({ ...f, address: v }))} placeholder="Endereço" />
+          <AppField label="Celular" value={form.phone} onChangeText={(v) => setForm((f) => ({ ...f, phone: v }))} placeholder="Número de celular" keyboardType="phone-pad" />
+          <AppField label="Nascimento" value={form.birth_date} onChangeText={(v) => setForm((f) => ({ ...f, birth_date: v }))} placeholder="YYYY-MM-DD" autoCapitalize="none" />
+          <AppField label="Batismo" value={form.baptism_date} onChangeText={(v) => setForm((f) => ({ ...f, baptism_date: v }))} placeholder="YYYY-MM-DD" autoCapitalize="none" />
+          <AppField label="Mudança de instrumento" value={form.instrument_change_note} onChangeText={(v) => setForm((f) => ({ ...f, instrument_change_note: v }))} placeholder="Ex.: Violino → Viola" />
+          <SelectModal label="Status" value={form.status} options={statusOptions} onChange={(v) => setForm((f) => ({ ...f, status: v }))} />
+          <AppField label="Observações" value={form.observations} onChangeText={(v) => setForm((f) => ({ ...f, observations: v }))} placeholder="Observações gerais" multiline />
+          <ActionRow>
+            <View style={{ flex: 1 }}><SecondaryButton title="Cancelar" onPress={closeModal} /></View>
+            <View style={{ flex: 1 }}><PrimaryButton title="Salvar" onPress={onSave} loading={saving} /></View>
+          </ActionRow>
         </ScrollView>
       </Modal>
     </View>
@@ -332,48 +206,10 @@ export default function StudentsScreen({ navigation }) {
 function makeStyles(theme) {
   return StyleSheet.create({
     wrap: { flex: 1, backgroundColor: theme.colors.bg },
-
-    // estes 3 garantem que NADA fique claro vazando
-    listBg: { backgroundColor: theme.colors.bg },
-    contentBg: { padding: 12, paddingBottom: 24, backgroundColor: theme.colors.bg },
-    headerBg: { backgroundColor: theme.colors.bg, paddingBottom: 6 },
-
-    title: { fontSize: 22, fontWeight: '900', color: theme.colors.text, marginBottom: 6 },
-    subtitle: { fontSize: 13, color: theme.colors.textMuted, marginBottom: 12, fontWeight: '700' },
-
-    input: {
-      backgroundColor: theme.colors.inputBg,
-      color: theme.colors.inputText,
-      borderWidth: 1,
-      borderColor: theme.colors.border,
-      borderRadius: 10,
-      padding: 12,
-      marginBottom: 10,
-      fontWeight: '700'
-    },
-
-    rowWrap: { flexDirection: 'row', gap: 8, marginBottom: 10 },
-    primaryBtn: { flex: 1, backgroundColor: theme.colors.accent, padding: 12, borderRadius: 10, alignItems: 'center' },
-    primaryText: { color: '#fff', fontWeight: '900' },
-    secondaryBtn: { flex: 1, backgroundColor: theme.colors.card, borderWidth: 1, borderColor: theme.colors.border, padding: 12, borderRadius: 10, alignItems: 'center' },
-    secondaryText: { color: theme.colors.text, fontWeight: '900' },
-
-    addBtn: { backgroundColor: theme.colors.card, borderWidth: 1, borderColor: theme.colors.border, padding: 13, borderRadius: 12, alignItems: 'center' },
-    addBtnText: { color: theme.colors.text, fontWeight: '900' },
-
-    card: { backgroundColor: theme.colors.card, borderRadius: 14, borderWidth: 1, borderColor: theme.colors.border, padding: 12, marginBottom: 10 },
+    card: { backgroundColor: theme.colors.card, borderRadius: 16, borderWidth: 1, borderColor: theme.colors.border, padding: 12, marginBottom: 10 },
+    cardHeader: { flexDirection: 'row', alignItems: 'flex-start', gap: 10 },
     name: { fontSize: 16, fontWeight: '900', color: theme.colors.text },
     meta: { fontSize: 12, color: theme.colors.textMuted, marginTop: 4, fontWeight: '700' },
-
-    cardActions: { flexDirection: 'row', gap: 8, marginTop: 10, flexWrap: 'wrap' },
-    smallBtn: { backgroundColor: theme.colors.accent, paddingVertical: 8, paddingHorizontal: 12, borderRadius: 8 },
-    deleteBtn: { backgroundColor: theme.colors.danger },
-    smallBtnText: { color: '#fff', fontWeight: '900', fontSize: 12 },
-
-    empty: { textAlign: 'center', color: theme.colors.textMuted, marginTop: 24, fontWeight: '800' },
-
-    readonlyBox: { backgroundColor: theme.colors.card, borderWidth: 1, borderColor: theme.colors.border, borderRadius: 12, padding: 12, marginBottom: 10 },
-    readonlyLabel: { color: theme.colors.textMuted, fontWeight: '800', marginBottom: 4 },
-    readonlyText: { color: theme.colors.text, fontWeight: '900' }
+    readonlyText: { color: theme.colors.text, fontWeight: '900' },
   });
 }

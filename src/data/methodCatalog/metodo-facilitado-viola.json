@@ -1,0 +1,413 @@
+{
+  "method": {
+    "name": "Método Facilitado",
+    "family": "cordas-arco",
+    "volume": 0,
+    "total_pages": 80,
+    "id": "metodo-facilitado-viola",
+    "instruments": [
+      "viola"
+    ]
+  },
+  "structure": [
+    {
+      "lesson": 1,
+      "page_start": 1,
+      "page_end": 4,
+      "pageitems": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "lessonitems": [
+        "lição 1 - afinação do instrumento e introdução"
+      ],
+      "exercises": [
+        "afinação da viola",
+        "partes do instrumento",
+        "preparação inicial"
+      ],
+      "contentitems": [
+        {
+          "type": "técnica",
+          "number": "afinação"
+        },
+        {
+          "type": "técnica",
+          "number": "partes do instrumento"
+        }
+      ]
+    },
+    {
+      "lesson": 2,
+      "page_start": 5,
+      "page_end": 11,
+      "pageitems": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "lessonitems": [
+        "lição 2 - capítulo I - cordas soltas"
+      ],
+      "exercises": [
+        "32 exercícios desligados",
+        "6 exercícios ligados",
+        "controle de arco"
+      ],
+      "contentitems": [
+        {
+          "type": "técnica",
+          "number": "cordas soltas"
+        },
+        {
+          "type": "estudo",
+          "number": "exercícios desligados"
+        },
+        {
+          "type": "estudo",
+          "number": "exercícios ligados"
+        }
+      ]
+    },
+    {
+      "lesson": 3,
+      "page_start": 12,
+      "page_end": 25,
+      "pageitems": [
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25
+      ],
+      "lessonitems": [
+        "lição 3 - capítulo II - mão esquerda - primeira posição"
+      ],
+      "exercises": [
+        "primeiro ao quarto dedos",
+        "intervalos de 2ª à 8ª",
+        "exercícios de fixação"
+      ],
+      "contentitems": [
+        {
+          "type": "técnica",
+          "number": "primeira posição"
+        },
+        {
+          "type": "técnica",
+          "number": "fixação"
+        },
+        {
+          "type": "estudo",
+          "number": "intervalos"
+        }
+      ]
+    },
+    {
+      "lesson": 4,
+      "page_start": 26,
+      "page_end": 26,
+      "pageitems": [
+        26
+      ],
+      "lessonitems": [
+        "lição 4 - capítulo III - síncopas"
+      ],
+      "exercises": [
+        "ilustração e prática de síncopas"
+      ],
+      "contentitems": [
+        {
+          "type": "técnica",
+          "number": "síncopas"
+        }
+      ]
+    },
+    {
+      "lesson": 5,
+      "page_start": 27,
+      "page_end": 29,
+      "pageitems": [
+        27,
+        28,
+        29
+      ],
+      "lessonitems": [
+        "lição 5 - capítulo IV - golpes de arco"
+      ],
+      "exercises": [
+        "détaché",
+        "spiccato"
+      ],
+      "contentitems": [
+        {
+          "type": "técnica",
+          "number": "détaché"
+        },
+        {
+          "type": "técnica",
+          "number": "spiccato"
+        }
+      ]
+    },
+    {
+      "lesson": 6,
+      "page_start": 30,
+      "page_end": 30,
+      "pageitems": [
+        30
+      ],
+      "lessonitems": [
+        "lição 6 - capítulo V - vibrato"
+      ],
+      "exercises": [
+        "ilustração de vibrato"
+      ],
+      "contentitems": [
+        {
+          "type": "técnica",
+          "number": "vibrato"
+        }
+      ]
+    },
+    {
+      "lesson": 7,
+      "page_start": 31,
+      "page_end": 40,
+      "pageitems": [
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40
+      ],
+      "lessonitems": [
+        "lição 7 - capítulo VI - escalas maiores e aplicação"
+      ],
+      "exercises": [
+        "Dó maior",
+        "Sol maior",
+        "Fá maior",
+        "Ré maior",
+        "Si bemol maior",
+        "Lá maior",
+        "Mi bemol maior",
+        "Mi maior",
+        "Lá bemol maior",
+        "Ré bemol maior",
+        "escala cromática"
+      ],
+      "contentitems": [
+        {
+          "type": "escala",
+          "number": "Dó maior"
+        },
+        {
+          "type": "escala",
+          "number": "Sol maior"
+        },
+        {
+          "type": "escala",
+          "number": "escala cromática"
+        }
+      ]
+    },
+    {
+      "lesson": 8,
+      "page_start": 41,
+      "page_end": 50,
+      "pageitems": [
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50
+      ],
+      "lessonitems": [
+        "lição 8 - volume II - segunda posição"
+      ],
+      "exercises": [
+        "posição fixa",
+        "exercícios aplicativos",
+        "mudança da I para II posição"
+      ],
+      "contentitems": [
+        {
+          "type": "técnica",
+          "number": "segunda posição"
+        },
+        {
+          "type": "estudo",
+          "number": "mudança I-II"
+        }
+      ]
+    },
+    {
+      "lesson": 9,
+      "page_start": 51,
+      "page_end": 58,
+      "pageitems": [
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58
+      ],
+      "lessonitems": [
+        "lição 9 - volume II - terceira posição"
+      ],
+      "exercises": [
+        "posição fixa",
+        "exercícios aplicativos",
+        "mudança da I para III posição"
+      ],
+      "contentitems": [
+        {
+          "type": "técnica",
+          "number": "terceira posição"
+        },
+        {
+          "type": "estudo",
+          "number": "mudança I-III"
+        }
+      ]
+    },
+    {
+      "lesson": 10,
+      "page_start": 59,
+      "page_end": 66,
+      "pageitems": [
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66
+      ],
+      "lessonitems": [
+        "lição 10 - volume II - quarta posição"
+      ],
+      "exercises": [
+        "posição fixa",
+        "exercícios aplicativos",
+        "mudança da I para IV posição"
+      ],
+      "contentitems": [
+        {
+          "type": "técnica",
+          "number": "quarta posição"
+        },
+        {
+          "type": "estudo",
+          "number": "mudança I-IV"
+        }
+      ]
+    },
+    {
+      "lesson": 11,
+      "page_start": 67,
+      "page_end": 74,
+      "pageitems": [
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74
+      ],
+      "lessonitems": [
+        "lição 11 - volume II - mudança de posição e escalas"
+      ],
+      "exercises": [
+        "mudanças entre II, III e IV posições",
+        "escalas maiores em 2 oitavas",
+        "escalas menores melódicas em 2 oitavas"
+      ],
+      "contentitems": [
+        {
+          "type": "técnica",
+          "number": "mudança de posição"
+        },
+        {
+          "type": "escala",
+          "number": "maiores em 2 oitavas"
+        },
+        {
+          "type": "escala",
+          "number": "menores melódicas em 2 oitavas"
+        }
+      ]
+    },
+    {
+      "lesson": 12,
+      "page_start": 75,
+      "page_end": 80,
+      "pageitems": [
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ],
+      "lessonitems": [
+        "lição 12 - volume II - quartetos de cordas"
+      ],
+      "exercises": [
+        "4 quartetos de cordas",
+        "partes para viola",
+        "anotações finais"
+      ],
+      "contentitems": [
+        {
+          "type": "peça",
+          "number": "quarteto 1"
+        },
+        {
+          "type": "peça",
+          "number": "quarteto 2"
+        },
+        {
+          "type": "peça",
+          "number": "quarteto 3"
+        },
+        {
+          "type": "peça",
+          "number": "quarteto 4"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,225 @@
+{
+  "method": {
+    "name": "Nicolas Laoureux I",
+    "family": "cordas-arco",
+    "volume": 1,
+    "total_pages": 65,
+    "id": "laoureux-i-violino",
+    "instruments": [
+      "violino"
+    ]
+  },
+  "structure": [
+    {
+      "lesson": 1,
+      "page_start": 1,
+      "page_end": 12,
+      "pageitems": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "lessonitems": [
+        "lição 1 - postura geral e cordas soltas"
+      ],
+      "exercises": [
+        "segurar o violino",
+        "segurar o arco",
+        "cordas soltas",
+        "traço reto do arco"
+      ],
+      "contentitems": [
+        {
+          "type": "técnica",
+          "number": "postura geral"
+        },
+        {
+          "type": "técnica",
+          "number": "cordas soltas"
+        },
+        {
+          "type": "estudo",
+          "number": 1
+        }
+      ]
+    },
+    {
+      "lesson": 2,
+      "page_start": 13,
+      "page_end": 24,
+      "pageitems": [
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ],
+      "lessonitems": [
+        "lição 2 - primeira posição e independência dos dedos"
+      ],
+      "exercises": [
+        "padrões 1-2-3-4",
+        "troca de cordas",
+        "afinação em primeira posição"
+      ],
+      "contentitems": [
+        {
+          "type": "técnica",
+          "number": "primeira posição"
+        },
+        {
+          "type": "escala",
+          "number": "Ré maior"
+        },
+        {
+          "type": "escala",
+          "number": "Sol maior"
+        }
+      ]
+    },
+    {
+      "lesson": 3,
+      "page_start": 25,
+      "page_end": 38,
+      "pageitems": [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38
+      ],
+      "lessonitems": [
+        "lição 3 - ligaduras, intervalos e ritmos básicos"
+      ],
+      "exercises": [
+        "ligaduras de 2 e 4 notas",
+        "intervalos conjuntos e disjuntos",
+        "ritmos simples"
+      ],
+      "contentitems": [
+        {
+          "type": "técnica",
+          "number": "ligaduras"
+        },
+        {
+          "type": "escala",
+          "number": "Lá maior"
+        },
+        {
+          "type": "arpejo",
+          "number": 1
+        }
+      ]
+    },
+    {
+      "lesson": 4,
+      "page_start": 39,
+      "page_end": 52,
+      "pageitems": [
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52
+      ],
+      "lessonitems": [
+        "lição 4 - arpejos e estudos progressivos"
+      ],
+      "exercises": [
+        "arpejos básicos",
+        "extensões simples",
+        "estudos de sonoridade"
+      ],
+      "contentitems": [
+        {
+          "type": "arpejo",
+          "number": 2
+        },
+        {
+          "type": "escala",
+          "number": "Dó maior"
+        },
+        {
+          "type": "estudo",
+          "number": 2
+        }
+      ]
+    },
+    {
+      "lesson": 5,
+      "page_start": 53,
+      "page_end": 65,
+      "pageitems": [
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65
+      ],
+      "lessonitems": [
+        "lição 5 - revisão técnica e pequenos estudos"
+      ],
+      "exercises": [
+        "revisão de escalas",
+        "estudos em primeira posição",
+        "controle de arco"
+      ],
+      "contentitems": [
+        {
+          "type": "estudo",
+          "number": 3
+        },
+        {
+          "type": "escala",
+          "number": "Fá maior"
+        },
+        {
+          "type": "arpejo",
+          "number": 3
+        }
+      ]
+    }
+  ]
+}

@@ -2,30 +2,53 @@ import React, { useCallback, useMemo, useState } from 'react';
 import { Alert, FlatList, Modal, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { useFocusEffect } from '@react-navigation/native';
 
-import { deleteTeacher, listTeachers, saveTeacher } from '../services/db';
+import { deleteTeacher, listInstruments, listProfilesBasic, listTeachers, saveTeacher } from '../services/db';
 import SelectModal from '../components/SelectModal';
 import { CONGREGATIONS, INSTRUMENTS, TEACHER_ROLES } from '../data/catalogs';
 import { useTheme } from '../theme/ThemeProvider';
 
-const emptyForm = { id: null, full_name: '', instrument: '', congregation: '', role_kind: 'Instrutor', active: true };
+const emptyForm = {
+  id: null,
+  full_name: '',
+  instrument: '',
+  congregation: '',
+  role_kind: 'Instrutor',
+  active: true,
+  profile_id: ''
+};
 
 export default function TeachersScreen() {
   const { theme } = useTheme();
   const styles = makeStyles(theme);
 
   const [teachers, setTeachers] = useState([]);
+  const [profiles, setProfiles] = useState([]);
+  const [instruments, setInstruments] = useState([]);
   const [modalVisible, setModalVisible] = useState(false);
   const [form, setForm] = useState(emptyForm);
   const [customCongregation, setCustomCongregation] = useState('');
 
-  const instrumentOptions = useMemo(() => INSTRUMENTS.map((i) => ({ label: i.label, value: i.label })), []);
+  const instrumentOptions = useMemo(
+    () => (instruments.length ? instruments : INSTRUMENTS).map((i) => ({ label: i.name || i.label, value: i.name || i.label })),
+    [instruments]
+  );
   const congregationOptions = useMemo(() => CONGREGATIONS.map((v) => ({ label: v, value: v })), []);
   const rolesOptions = useMemo(() => TEACHER_ROLES.map((v) => ({ label: v, value: v })), []);
+  const profileOptions = useMemo(
+    () => [{ label: 'Sem vínculo', value: '' }, ...profiles.map((profile) => ({ label: `${profile.full_name || 'Usuário sem nome'} • ${profile.role || 'instrutor'}`, value: profile.id }))],
+    [profiles]
+  );
 
   const load = useCallback(async () => {
     try {
-      const data = await listTeachers();
-      setTeachers(data);
+      const [teachersData, profilesData, instrumentsData] = await Promise.all([
+        listTeachers(),
+        listProfilesBasic(),
+        listInstruments({ activeOnly: true })
+      ]);
+      setTeachers(teachersData);
+      setProfiles(profilesData);
+      setInstruments(instrumentsData);
     } catch (e) {
       Alert.alert('Erro', e.message || 'Falha ao carregar professores.');
     }
@@ -44,6 +67,7 @@ export default function TeachersScreen() {
     setForm({
       ...emptyForm,
       ...item,
+      profile_id: item.profile_id || '',
       congregation: isCustom ? 'Outra' : (item.congregation || '')
     });
     setCustomCongregation(isCustom ? item.congregation : '');
@@ -55,7 +79,12 @@ export default function TeachersScreen() {
     if (!form.instrument) return Alert.alert('Atenção', 'Selecione o instrumento.');
     try {
       const finalCongregation = form.congregation === 'Outra' ? customCongregation.trim() : form.congregation;
-      await saveTeacher({ ...form, full_name: form.full_name.trim(), congregation: finalCongregation || null });
+      await saveTeacher({
+        ...form,
+        full_name: form.full_name.trim(),
+        congregation: finalCongregation || null,
+        profile_id: form.profile_id || null
+      });
       setModalVisible(false);
       load();
     } catch (e) {
@@ -66,9 +95,22 @@ export default function TeachersScreen() {
   const onDelete = (item) => {
     Alert.alert('Excluir professor', `Deseja excluir "${item.full_name}"?`, [
       { text: 'Cancelar', style: 'cancel' },
-      { text: 'Excluir', style: 'destructive', onPress: async () => { await deleteTeacher(item.id); load(); } }
+      {
+        text: 'Excluir',
+        style: 'destructive',
+        onPress: async () => {
+          try {
+            await deleteTeacher(item.id);
+            load();
+          } catch (error) {
+            Alert.alert('Erro', error.message || 'Falha ao excluir professor.');
+          }
+        }
+      }
     ]);
   };
+
+  const profileMap = useMemo(() => Object.fromEntries(profiles.map((profile) => [profile.id, profile])), [profiles]);
 
   return (
     <View style={styles.wrap}>
@@ -78,8 +120,8 @@ export default function TeachersScreen() {
         contentContainerStyle={{ padding: 12, paddingBottom: 24 }}
         ListHeaderComponent={
           <View style={{ marginBottom: 10 }}>
-            <Text style={styles.title}>Professores / Encarregados</Text>
-            <Text style={styles.subtitle}>Cadastre instrutores e encarregados.</Text>
+            <Text style={styles.title}>Professores / Instrutores</Text>
+            <Text style={styles.subtitle}>Cadastro operacional + vínculo opcional com usuário autenticado do app.</Text>
             <TouchableOpacity style={styles.primaryBtn} onPress={openNew}>
               <Text style={styles.primaryText}>+ Novo professor</Text>
             </TouchableOpacity>
@@ -89,7 +131,8 @@ export default function TeachersScreen() {
           <View style={styles.card}>
             <Text style={styles.name}>{item.full_name}</Text>
             <Text style={styles.meta}>{item.instrument || '-'} • {item.congregation || '-'}</Text>
-            <Text style={styles.meta}>{item.role_kind || '-'}</Text>
+            <Text style={styles.meta}>{item.role_kind || '-'} • {item.active === false ? 'Inativo' : 'Ativo'}</Text>
+            {!!item.profile_id && <Text style={styles.meta}>Usuário app: {profileMap[item.profile_id]?.full_name || item.profile_id}</Text>}
 
             <View style={styles.row}>
               <TouchableOpacity style={styles.secondaryBtn} onPress={() => openEdit(item)}>
@@ -129,6 +172,7 @@ export default function TeachersScreen() {
           )}
 
           <SelectModal label="Função" value={form.role_kind} options={rolesOptions} onChange={(v) => setForm((f) => ({ ...f, role_kind: v }))} />
+          <SelectModal label="Usuário do app (opcional)" value={form.profile_id} options={profileOptions} onChange={(v) => setForm((f) => ({ ...f, profile_id: v }))} />
 
           <View style={styles.row}>
             <TouchableOpacity style={styles.secondaryBtn} onPress={() => setModalVisible(false)}>
@@ -164,7 +208,7 @@ function makeStyles(theme) {
     primaryBtn: { backgroundColor: theme.colors.accent, padding: 12, borderRadius: 10, alignItems: 'center' },
     primaryText: { color: '#fff', fontWeight: '900' },
 
-    secondaryBtn: { backgroundColor: theme.colors.card, borderWidth: 1, borderColor: theme.colors.border, padding: 12, borderRadius: 10, alignItems: 'center' },
+    secondaryBtn: { flex: 1, backgroundColor: theme.colors.card, borderWidth: 1, borderColor: theme.colors.border, padding: 12, borderRadius: 10, alignItems: 'center' },
     secondaryText: { color: theme.colors.text, fontWeight: '900' },
 
     card: { backgroundColor: theme.colors.card, borderRadius: 14, borderWidth: 1, borderColor: theme.colors.border, padding: 12, marginBottom: 10 },

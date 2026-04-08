@@ -1,0 +1,194 @@
+{
+  "method": {
+    "name": "Dotzauer II",
+    "family": "cordas-arco",
+    "volume": 2,
+    "total_pages": 47,
+    "id": "dotzauer-ii-violoncello",
+    "instruments": [
+      "violoncelo"
+    ]
+  },
+  "structure": [
+    {
+      "lesson": 1,
+      "page_start": 1,
+      "page_end": 8,
+      "pageitems": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "lessonitems": [
+        "lição 1 - segunda posição"
+      ],
+      "exercises": [
+        "introdução à segunda posição",
+        "exercícios de fixação",
+        "afinação"
+      ],
+      "contentitems": [
+        {
+          "type": "técnica",
+          "number": "segunda posição"
+        },
+        {
+          "type": "escala",
+          "number": "Ré maior"
+        }
+      ]
+    },
+    {
+      "lesson": 2,
+      "page_start": 9,
+      "page_end": 18,
+      "pageitems": [
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18
+      ],
+      "lessonitems": [
+        "lição 2 - terceira posição"
+      ],
+      "exercises": [
+        "mudanças 1ª-3ª",
+        "estudos em terceira posição",
+        "legato com mudança"
+      ],
+      "contentitems": [
+        {
+          "type": "técnica",
+          "number": "terceira posição"
+        },
+        {
+          "type": "estudo",
+          "number": 1
+        }
+      ]
+    },
+    {
+      "lesson": 3,
+      "page_start": 19,
+      "page_end": 28,
+      "pageitems": [
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28
+      ],
+      "lessonitems": [
+        "lição 3 - quarta posição"
+      ],
+      "exercises": [
+        "padrões fixos",
+        "escalas e arpejos",
+        "deslocamentos curtos"
+      ],
+      "contentitems": [
+        {
+          "type": "técnica",
+          "number": "quarta posição"
+        },
+        {
+          "type": "arpejo",
+          "number": 1
+        },
+        {
+          "type": "escala",
+          "number": "Lá maior"
+        }
+      ]
+    },
+    {
+      "lesson": 4,
+      "page_start": 29,
+      "page_end": 37,
+      "pageitems": [
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37
+      ],
+      "lessonitems": [
+        "lição 4 - quinta posição"
+      ],
+      "exercises": [
+        "escalas em quinta posição",
+        "intervalos",
+        "trocas entre posições"
+      ],
+      "contentitems": [
+        {
+          "type": "técnica",
+          "number": "quinta posição"
+        },
+        {
+          "type": "estudo",
+          "number": 2
+        }
+      ]
+    },
+    {
+      "lesson": 5,
+      "page_start": 38,
+      "page_end": 47,
+      "pageitems": [
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47
+      ],
+      "lessonitems": [
+        "lição 5 - estudos de mudança e aplicação melódica"
+      ],
+      "exercises": [
+        "mudanças entre 2ª e 5ª posições",
+        "estudos cantábiles",
+        "revisão"
+      ],
+      "contentitems": [
+        {
+          "type": "técnica",
+          "number": "mudança de posição"
+        },
+        {
+          "type": "peça",
+          "number": 1
+        },
+        {
+          "type": "arpejo",
+          "number": 2
+        }
+      ]
+    }
+  ]
+}

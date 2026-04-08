@@ -6,22 +6,40 @@ import { useAuth } from '../context/AuthContext';
 import { useTheme } from '../theme/ThemeProvider';
 
 import LoginScreen from '../screens/LoginScreen';
-import DashboardScreen from '../screens/DashboardScreen';
 import StudentsScreen from '../screens/StudentsScreen';
 import StudentDetailScreen from '../screens/StudentDetailScreen';
 import ReportsScreen from '../screens/ReportsScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 import MethodsScreen from '../screens/MethodsScreen';
 import TeachersScreen from '../screens/TeachersScreen';
-import LessonLaunchesScreen from '../screens/LessonLaunchesScreen';
 import LogsScreen from '../screens/LogsScreen';
+import TodayScreen from '../screens/TodayScreen';
+import LessonCenterScreen from '../screens/LessonCenterScreen';
+import AttendanceScreen from '../screens/AttendanceScreen';
+import TheoryGroupsScreen from '../screens/TheoryGroupsScreen';
 
 import DrawerMenuButton from '../components/DrawerMenuButton';
+import MainShellScreen from '../screens/MainShellScreen';
 
 const Drawer = createDrawerNavigator();
 const Stack = createNativeStackNavigator();
 
-function StudentsStack() {
+function makeShellRoute(Component, activeRoute) {
+  return function Wrapped(props) {
+    return (
+      <MainShellScreen activeRoute={activeRoute} navigation={props.navigation}>
+        <Component {...props} />
+      </MainShellScreen>
+    );
+  };
+}
+
+const TodayRoute = makeShellRoute(TodayScreen, 'Today');
+const StudentsRoute = makeShellRoute(StudentsScreen, 'StudentsHome');
+const LessonsRoute = makeShellRoute(LessonCenterScreen, 'LessonsHome');
+const AttendanceRoute = makeShellRoute(AttendanceScreen, 'AttendanceHome');
+
+function PrimaryStack() {
   const { theme } = useTheme();
 
   return (
@@ -30,10 +48,13 @@ function StudentsStack() {
         headerTitleAlign: 'left',
         headerStyle: { backgroundColor: theme.colors.card },
         headerTintColor: theme.colors.text,
-        headerLeft: () => <DrawerMenuButton navigation={navigation} color={theme.colors.text} />
+        headerLeft: () => <DrawerMenuButton navigation={navigation} color={theme.colors.text} />,
       })}
     >
-      <Stack.Screen name="StudentsList" component={StudentsScreen} options={{ title: 'Alunos' }} />
+      <Stack.Screen name="Today" component={TodayRoute} options={{ title: 'Hoje' }} />
+      <Stack.Screen name="LessonsHome" component={LessonsRoute} options={{ title: 'Aulas' }} />
+      <Stack.Screen name="AttendanceHome" component={AttendanceRoute} options={{ title: 'Presença' }} />
+      <Stack.Screen name="StudentsHome" component={StudentsRoute} options={{ title: 'Alunos' }} />
       <Stack.Screen name="StudentDetail" component={StudentDetailScreen} options={{ title: 'Aluno' }} />
     </Stack.Navigator>
   );
@@ -62,15 +83,14 @@ export default function AppNavigator() {
         sceneContainerStyle: { backgroundColor: theme.colors.bg },
         drawerStyle: { backgroundColor: theme.colors.card },
         drawerActiveTintColor: theme.colors.accent,
-        drawerInactiveTintColor: theme.colors.textMuted
+        drawerInactiveTintColor: theme.colors.textMuted,
       }}
     >
-      <Drawer.Screen name="Dashboard" component={DashboardScreen} />
-      <Drawer.Screen name="Alunos" component={StudentsStack} options={{ headerShown: false }} />
-      <Drawer.Screen name="Lançamentos" component={LessonLaunchesScreen} />
-      <Drawer.Screen name="Métodos" component={MethodsScreen} />
-      <Drawer.Screen name="Professores" component={TeachersScreen} />
+      <Drawer.Screen name="Operação" component={PrimaryStack} options={{ headerShown: false }} />
       <Drawer.Screen name="Relatórios" component={ReportsScreen} />
+      <Drawer.Screen name="Métodos" component={MethodsScreen} />
+      <Drawer.Screen name="GruposTeoricos" component={TheoryGroupsScreen} options={{ title: 'Grupos teóricos' }} />
+      <Drawer.Screen name="Professores" component={TeachersScreen} />
       <Drawer.Screen name="Configurações" component={SettingsScreen} />
       <Drawer.Screen name="Logs" component={LogsScreen} />
     </Drawer.Navigator>
